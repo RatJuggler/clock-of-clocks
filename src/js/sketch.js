@@ -8,7 +8,12 @@ function setup() {
     createCanvas(windowWidth, windowHeight);
     frameRate(60);
     angleMode(DEGREES);
-    this.clock = new Clock(200, 200, clockSize);
+    clocks = [];
+    for (let yClocks = 0; yClocks < VERTICAL_CLOCKS; yClocks++) {
+        for (let xClocks = 0; xClocks < HORIZONTAL_CLOCKS; xClocks++) {
+            clocks.push(new Clock(clockSize * xClocks, clockSize * yClocks, clockSize));
+        }
+    }
 }
 
 function windowResized() {
@@ -19,9 +24,11 @@ function draw() {
     background(220);
     strokeWeight(4);
 
-    // Show clock.
-    this.clock.update(hour(), minute(), second());
-    this.clock.render();
+    // Show clocks.
+    clocks.forEach(clock => {
+        clock.update(hour(), minute(), second());
+        clock.render();
+    })
 
     // Show screen size and FPS.
     stroke(220);
