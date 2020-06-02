@@ -1,8 +1,14 @@
+const HORIZONTAL_CLOCKS = 24;
+const VERTICAL_CLOCKS = 12;
+
 function setup() {
+    let clockWidth = int(windowWidth / HORIZONTAL_CLOCKS);
+    let clockHeight = int(windowHeight / VERTICAL_CLOCKS);
+    let clockSize = min(clockWidth, clockHeight);
     createCanvas(windowWidth, windowHeight);
     frameRate(60);
     angleMode(DEGREES);
-    this.clock = new Clock(200, 200, 200);
+    this.clock = new Clock(200, 200, clockSize);
 }
 
 function windowResized() {
@@ -11,7 +17,7 @@ function windowResized() {
 
 function draw() {
     background(220);
-    strokeWeight(8);
+    strokeWeight(4);
 
     // Show clock.
     this.clock.update(hour(), minute(), second());
