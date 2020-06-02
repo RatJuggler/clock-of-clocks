@@ -20,7 +20,7 @@ class ClockOfClocks {
 
     display() {
         this.clocks.forEach(clock => {
-            clock.update(hour(), minute(), second());
+            clock.update(hour(), minute());
             clock.render();
         })
     }
