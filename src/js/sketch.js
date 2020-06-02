@@ -1,5 +1,5 @@
-const HORIZONTAL_CLOCKS = 24;
-const VERTICAL_CLOCKS = 12;
+const HORIZONTAL_CLOCKS = 22;
+const VERTICAL_CLOCKS = 8;
 
 function setup() {
     let clockWidth = int(windowWidth / HORIZONTAL_CLOCKS);
@@ -9,9 +9,10 @@ function setup() {
     frameRate(60);
     angleMode(DEGREES);
     clocks = [];
+    let offset = int(clockSize / 2) + 1;
     for (let yClocks = 0; yClocks < VERTICAL_CLOCKS; yClocks++) {
         for (let xClocks = 0; xClocks < HORIZONTAL_CLOCKS; xClocks++) {
-            clocks.push(new Clock(clockSize * xClocks, clockSize * yClocks, clockSize));
+            clocks.push(new Clock( offset + (clockSize * xClocks), offset + (clockSize * yClocks), clockSize));
         }
     }
 }
@@ -22,7 +23,6 @@ function windowResized() {
 
 function draw() {
     background(220);
-    strokeWeight(4);
 
     // Show clocks.
     clocks.forEach(clock => {

@@ -13,7 +13,8 @@ class Clock {
         push();
         translate(this.x, this.y);
         rotate(angle - 90);
-        line(0, 0, this.d * hand / 200, 0);
+        strokeWeight(4);
+        line(0, 0,this.d * hand / 200, 0);
         pop();
     }
 
