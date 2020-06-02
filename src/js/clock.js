@@ -28,10 +28,10 @@ class Clock {
 
     update() {
         if (this.hh !== this.toHH) {
-            this.hh = (this.hh + this.deltaHH) % 12;
+            this.hh = this.hh + this.deltaHH;
         }
         if (this.mm !== this.toMM) {
-            this.mm = (this.mm + this.deltaMM) % 60;
+            this.mm = this.mm + this.deltaMM;
         }
     }
 

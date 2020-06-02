@@ -20,7 +20,7 @@ class ClockOfClocks {
     }
 
     display() {
-        if (this.newTarget && second() % 10 === 0) {
+        if (this.newTarget && second() % 5 === 0) {
             this.clocks.forEach(clock => {
                 clock.setTarget();
             })
@@ -30,7 +30,7 @@ class ClockOfClocks {
             clock.update();
             clock.render();
         })
-        if (!this.newTarget && second() % 10 !== 0) {
+        if (!this.newTarget && second() % 5 !== 0) {
             this.newTarget = true;
         }
     }
