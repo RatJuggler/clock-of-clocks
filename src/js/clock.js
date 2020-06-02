@@ -9,11 +9,11 @@ class Clock {
         this.ss = 0;
     }
 
-    _drawHand(width, angle) {
+    _drawHand(hand, angle) {
         push();
         translate(this.x, this.y);
         rotate(angle - 90);
-        line(0, 0, width / 2, 0);
+        line(0, 0, this.d * hand / 200, 0);
         pop();
     }
 
@@ -23,13 +23,13 @@ class Clock {
         ellipse(this.x, this.y, this.d);
 
         stroke(175, 208, 191);
-        this._drawHand(this.d - 25, map(this.ss, 0, 60, 0, 360));
+        this._drawHand(80, map(this.ss, 0, 60, 0, 360));
 
         stroke(128, 143, 135);
-        this._drawHand(this.d - 50, map(this.mm, 0, 60, 0, 360));
+        this._drawHand(70, map(this.mm, 0, 60, 0, 360));
 
         stroke(155, 126, 70);
-        this._drawHand(this.d - 75, map(this.hh % 12, 0, 12, 0, 360));
+        this._drawHand(60, map(this.hh % 12, 0, 12, 0, 360));
 
         stroke(0);
         point(0, 0);
