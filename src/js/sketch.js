@@ -12,18 +12,22 @@ function createClocks() {
             clocks.push(new Clock( offset + (clockSize * xClocks), offset + (clockSize * yClocks), clockSize));
         }
     }
+    return {
+        "width": clockSize * HORIZONTAL_CLOCKS + 1,
+        "height": clockSize * VERTICAL_CLOCKS + 1
+    }
 }
 
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    let canvasSize = createClocks();
+    createCanvas(canvasSize.width, canvasSize.height);
     frameRate(60);
     angleMode(DEGREES);
-    createClocks();
 }
 
 function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
-    createClocks();
+    let canvasSize = createClocks();
+    resizeCanvas(canvasSize.width, canvasSize.height);
 }
 
 function draw() {
