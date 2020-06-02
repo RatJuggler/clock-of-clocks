@@ -16,13 +16,23 @@ class ClockOfClocks {
                 this.clocks.push(new Clock( offset + (clockSize * xClocks), offset + (clockSize * yClocks), clockSize));
             }
         }
+        this.newTarget = true;
     }
 
     display() {
+        if (this.newTarget && second() % 10 === 0) {
+            this.clocks.forEach(clock => {
+                clock.setTarget();
+            })
+            this.newTarget = false;
+        }
         this.clocks.forEach(clock => {
-            clock.update(hour(), minute());
+            clock.update();
             clock.render();
         })
+        if (!this.newTarget && second() % 10 !== 0) {
+            this.newTarget = true;
+        }
     }
 
 }
