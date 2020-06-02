@@ -1,13 +1,10 @@
 const HORIZONTAL_CLOCKS = 22;
 const VERTICAL_CLOCKS = 8;
 
-function setup() {
+function createClocks() {
     let clockWidth = int(windowWidth / HORIZONTAL_CLOCKS);
     let clockHeight = int(windowHeight / VERTICAL_CLOCKS);
     let clockSize = min(clockWidth, clockHeight);
-    createCanvas(windowWidth, windowHeight);
-    frameRate(60);
-    angleMode(DEGREES);
     clocks = [];
     let offset = int(clockSize / 2) + 1;
     for (let yClocks = 0; yClocks < VERTICAL_CLOCKS; yClocks++) {
@@ -17,8 +14,16 @@ function setup() {
     }
 }
 
+function setup() {
+    createCanvas(windowWidth, windowHeight);
+    frameRate(60);
+    angleMode(DEGREES);
+    createClocks();
+}
+
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
+    createClocks();
 }
 
 function draw() {
