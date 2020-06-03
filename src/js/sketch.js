@@ -20,6 +20,7 @@ function setup() {
     angleMode(DEGREES);
     repeatEvery(() => clockOfClocks.setTargetSeconds(), SECOND);
     repeatEvery(() => clockOfClocks.setTargetTime(), MINUTE);
+    clockOfClocks.setTargetTime();
 }
 
 function windowResized() {
