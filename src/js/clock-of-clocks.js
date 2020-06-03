@@ -4,11 +4,13 @@ const VERTICAL_CLOCKS = 8;
 class ClockOfClocks {
 
     constructor(windowWidth, windowHeight) {
+        // Work out how big each clock and the canvas will be given the current window size.
         let clockWidth = int(windowWidth / HORIZONTAL_CLOCKS);
         let clockHeight = int(windowHeight / VERTICAL_CLOCKS);
         let clockSize = min(clockWidth, clockHeight);
         this.width = clockSize * HORIZONTAL_CLOCKS + 1;
         this.height = clockSize * VERTICAL_CLOCKS + 1;
+        // Initialise the clocks.
         this.clocks = [];
         let offset = int(clockSize / 2) + 1;
         for (let yClocks = 0; yClocks < VERTICAL_CLOCKS; yClocks++) {
@@ -27,12 +29,14 @@ class ClockOfClocks {
     }
 
     _targetDigit(digit, offset) {
+        let digitIdx = 0;
+        let clockIdx = offset;
         for (let height = 0; height < DIGITS[digit].height; height++) {
             for (let width = 0; width < DIGITS[digit].width; width++) {
-                let clockIdx = offset + (height * HORIZONTAL_CLOCKS) + width;
-                let digitIdx = (height * DIGITS[digit].width) + width;
-                this.clocks[clockIdx].setTarget(DIGITS[digit].shape[digitIdx].hh, DIGITS[digit].shape[digitIdx].mm);
+                this.clocks[clockIdx + width].setTarget(DIGITS[digit].shape[digitIdx].hh, DIGITS[digit].shape[digitIdx].mm);
+                digitIdx++;
             }
+            clockIdx += HORIZONTAL_CLOCKS;
         }
         return offset + DIGITS[digit].width;
     }
