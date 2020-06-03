@@ -16,10 +16,9 @@ class ClockOfClocks {
                 this.clocks.push(new Clock( offset + (clockSize * xClocks), offset + (clockSize * yClocks), clockSize));
             }
         }
-        this.newTarget = true;
     }
 
-    _targetDigit(digit, offset) {
+    targetDigit(digit, offset) {
         for (let height = 0; height < DIGITS[digit].height; height++) {
             for (let width = 0; width < DIGITS[digit].width; width++) {
                 let clockIdx = offset + (height * HORIZONTAL_CLOCKS) + width;
@@ -31,21 +30,10 @@ class ClockOfClocks {
     }
 
     display() {
-        if (this.newTarget && second() === 0) {
-            let time = str(hour()).padStart(2, "0") + ":" + str(minute()).padStart(2, "0");
-            let offset = HORIZONTAL_CLOCKS;
-            for (let c of time) {
-                offset = this._targetDigit(c, offset);
-            }
-            this.newTarget = false;
-        }
         this.clocks.forEach(clock => {
             clock.update();
             clock.render();
         })
-        if (!this.newTarget && second() !== 0) {
-            this.newTarget = true;
-        }
     }
 
 }

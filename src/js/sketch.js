@@ -1,8 +1,30 @@
+const MINUTE = 60 * 1000;
+
+function setTargetTime() {
+    let time = str(hour()).padStart(2, "0") + ":" + str(minute()).padStart(2, "0");
+    console.log(time);
+    let offset = HORIZONTAL_CLOCKS;
+    for (let c of time) {
+        offset = clockOfClocks.targetDigit(c, offset);
+    }
+}
+
+function repeatEveryMinute() {
+    let now = new Date();
+    let delay = MINUTE - now % MINUTE;
+    console.log("Now: " + now + " Waiting: " + delay);
+    setTimeout(() => {
+        setTargetTime();
+        repeatEveryMinute();
+    }, delay);
+}
+
 function setup() {
     clockOfClocks = new ClockOfClocks(windowWidth, windowHeight);
     createCanvas(clockOfClocks.width, clockOfClocks.height);
     frameRate(30);
     angleMode(DEGREES);
+    repeatEveryMinute();
 }
 
 function windowResized() {
