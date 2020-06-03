@@ -6,7 +6,8 @@ class Clock {
         this.d = d;
         this.hh = 0;
         this.mm = 0;
-        this.setTarget();
+        this.toHH = 15;
+        this.toMM = 45;
     }
 
     _drawHand(hand) {
@@ -38,9 +39,9 @@ class Clock {
         }
     }
 
-    setTarget() {
-        this.toHH = int(random(0, 60));
-        this.toMM = int(random(0, 60));
+    setTarget(toHH, toMM) {
+        this.toHH = toHH;
+        this.toMM = toMM;
     }
 
 }
