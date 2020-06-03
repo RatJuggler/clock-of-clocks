@@ -1,21 +1,15 @@
 const SECOND = 1000;
 const MINUTE = 60 * 1000;
+const SHOW_FPS = true;
 
-function repeatEveryMinute() {
-    let now = new Date();
-    let delay = MINUTE - now % MINUTE;
-    setTimeout(() => {
-        clockOfClocks.setTargetTime();
-        repeatEveryMinute();
-    }, delay);
-}
+let clockOfClocks;
 
-function repeatEverySecond() {
+function repeatEvery(handler, interval) {
     let now = new Date();
-    let delay = SECOND - now % SECOND;
+    let delay = interval - now % interval;
     setTimeout(() => {
-        clockOfClocks.setTargetSeconds();
-        repeatEverySecond();
+        handler();
+        repeatEvery(handler, interval);
     }, delay);
 }
 
@@ -24,8 +18,8 @@ function setup() {
     createCanvas(clockOfClocks.width, clockOfClocks.height);
     frameRate(30);
     angleMode(DEGREES);
-    repeatEverySecond();
-    repeatEveryMinute();
+    repeatEvery(() => clockOfClocks.setTargetSeconds(), SECOND);
+    repeatEvery(() => clockOfClocks.setTargetTime(), MINUTE);
 }
 
 function windowResized() {
@@ -38,10 +32,12 @@ function draw() {
     // Show clocks.
     clockOfClocks.display();
     // Show FPS and detail on clock/screen sizes.
-    fill(0, 255, 0);
-    text(`FPS: ${round(getFrameRate(), 2)}
+    if (SHOW_FPS) {
+        fill(0, 255, 0);
+        text(`FPS: ${round(getFrameRate(), 2)}
 Time: ${hour()}:${minute()}:${second()}
 Clocks: ${HORIZONTAL_CLOCKS} x ${VERTICAL_CLOCKS}
 Canvas: ${clockOfClocks.width} x ${clockOfClocks.height}
 Window: ${windowWidth} x ${windowHeight}`, 10, clockOfClocks.height - 50);
+    }
 }
