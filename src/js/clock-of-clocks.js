@@ -27,15 +27,16 @@ class ClockOfClocks {
                 this.clocks[clockIdx].setTarget(DIGITS[digit].shape[digitIdx].hh, DIGITS[digit].shape[digitIdx].mm);
             }
         }
+        return offset + DIGITS[digit].width;
     }
 
     display() {
         if (this.newTarget && second() % 5 === 0) {
-            this._targetDigit(str(int(random(0, 10))), HORIZONTAL_CLOCKS)
-            this._targetDigit(str(int(random(0, 10))), HORIZONTAL_CLOCKS + 5);
-            this._targetDigit(':', HORIZONTAL_CLOCKS + 10);
-            this._targetDigit(str(int(random(0, 10))), HORIZONTAL_CLOCKS + 12);
-            this._targetDigit(str(int(random(0, 10))), HORIZONTAL_CLOCKS + 17);
+            let time = str(hour()).padStart(2, "0") + ":" + str(minute()).padStart(2, "0");
+            let offset = HORIZONTAL_CLOCKS;
+            for (let c of time) {
+                offset = this._targetDigit(c, offset);
+            }
             this.newTarget = false;
         }
         this.clocks.forEach(clock => {
