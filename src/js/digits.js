@@ -1,6 +1,7 @@
 const DIGITS = {
     ":": {
-        "size": {"width": 2, "height": 6},
+        "width": 2,
+        "height": 6,
         "shape": [
             {"hh": 15, "mm": 15}, {"hh": 45, "mm": 45},
             {"hh": 15, "mm": 30}, {"hh": 30, "mm": 45},
@@ -11,7 +12,8 @@ const DIGITS = {
         ]
     },
     "0": {
-        "size": {"width": 5, "height": 6},
+        "width": 5,
+        "height": 6,
         "shape": [
             {"hh": 15, "mm": 30}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 30, "mm": 45},
             {"hh": 0,  "mm": 30}, {"hh": 15, "mm": 30}, {"hh": 15, "mm": 45}, {"hh": 30, "mm": 45}, {"hh": 0,  "mm": 30},
@@ -22,7 +24,8 @@ const DIGITS = {
         ]
     },
     "1": {
-        "size": {"width": 5, "height": 6},
+        "width": 5,
+        "height": 6,
         "shape": [
             {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 30}, {"hh": 15, "mm": 45}, {"hh": 30, "mm": 45},
             {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 0,  "mm": 15}, {"hh": 30, "mm": 45}, {"hh": 0,  "mm": 30},
@@ -33,7 +36,8 @@ const DIGITS = {
         ]
     },
     "2": {
-        "size": {"width": 5, "height": 6},
+        "width": 5,
+        "height": 6,
         "shape": [
             {"hh": 15, "mm": 30}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 30, "mm": 45},
             {"hh": 0,  "mm": 15}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 30, "mm": 45}, {"hh": 0,  "mm": 30},
@@ -44,7 +48,8 @@ const DIGITS = {
         ]
     },
     "3": {
-        "size": {"width": 5, "height": 6},
+        "width": 5,
+        "height": 6,
         "shape": [
             {"hh": 15, "mm": 30}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 30, "mm": 45},
             {"hh": 0,  "mm": 15}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 30, "mm": 45}, {"hh": 0,  "mm": 30},
@@ -55,7 +60,8 @@ const DIGITS = {
         ]
     },
     "4": {
-        "size": {"width": 5, "height": 6},
+        "width": 5,
+        "height": 6,
         "shape": [
             {"hh": 15, "mm": 30}, {"hh": 30, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 30}, {"hh": 30, "mm": 45},
             {"hh": 0,  "mm": 30}, {"hh": 0,  "mm": 30}, {"hh": 0,  "mm": 15}, {"hh": 0,  "mm": 30}, {"hh": 0,  "mm": 30},
@@ -66,7 +72,8 @@ const DIGITS = {
         ]
     },
     "5": {
-        "size": {"width": 5, "height": 6},
+        "width": 5,
+        "height": 6,
         "shape": [
             {"hh": 15, "mm": 30}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 30, "mm": 45},
             {"hh": 0,  "mm": 30}, {"hh": 15, "mm": 30}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 0,  "mm": 45},
@@ -77,7 +84,8 @@ const DIGITS = {
         ]
     },
     "6": {
-        "size": {"width": 5, "height": 6},
+        "width": 5,
+        "height": 6,
         "shape": [
             {"hh": 15, "mm": 30}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 30, "mm": 45},
             {"hh": 0,  "mm": 30}, {"hh": 15, "mm": 30}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 0,  "mm": 45},
@@ -88,7 +96,8 @@ const DIGITS = {
         ]
     },
     "7": {
-        "size": {"width": 5, "height": 6},
+        "width": 5,
+        "height": 6,
         "shape": [
             {"hh": 15, "mm": 30}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 30, "mm": 45},
             {"hh": 0,  "mm": 15}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 30, "mm": 45}, {"hh": 0,  "mm": 30},
@@ -99,7 +108,8 @@ const DIGITS = {
         ]
     },
     "8": {
-        "size": {"width": 5, "height": 6},
+        "width": 5,
+        "height": 6,
         "shape": [
             {"hh": 15, "mm": 30}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 30, "mm": 45},
             {"hh": 0,  "mm": 30}, {"hh": 15, "mm": 30}, {"hh": 15, "mm": 45}, {"hh": 30, "mm": 45}, {"hh": 0,  "mm": 30},
@@ -110,7 +120,8 @@ const DIGITS = {
         ]
     },
     "9": {
-        "size": {"width": 5, "height": 6},
+        "width": 5,
+        "height": 6,
         "shape": [
             {"hh": 15, "mm": 30}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 30, "mm": 45},
             {"hh": 0,  "mm": 30}, {"hh": 15, "mm": 30}, {"hh": 15, "mm": 45}, {"hh": 30, "mm": 45}, {"hh": 0,  "mm": 30},
