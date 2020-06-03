@@ -1,4 +1,4 @@
-const HORIZONTAL_CLOCKS = 22;
+const HORIZONTAL_CLOCKS = 18;
 const VERTICAL_CLOCKS = 8;
 
 class ClockOfClocks {
