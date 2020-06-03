@@ -31,7 +31,7 @@ class ClockOfClocks {
     }
 
     display() {
-        if (this.newTarget && second() % 5 === 0) {
+        if (this.newTarget && second() === 0) {
             let time = str(hour()).padStart(2, "0") + ":" + str(minute()).padStart(2, "0");
             let offset = HORIZONTAL_CLOCKS;
             for (let c of time) {
@@ -43,7 +43,7 @@ class ClockOfClocks {
             clock.update();
             clock.render();
         })
-        if (!this.newTarget && second() % 5 !== 0) {
+        if (!this.newTarget && second() !== 0) {
             this.newTarget = true;
         }
     }
