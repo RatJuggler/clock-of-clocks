@@ -1,9 +1,11 @@
 class Clock {
 
     constructor(x, y, d) {
-        this.x = x;
+        this.x = x;         // Clock center postion x,y
         this.y = y;
-        this.d = d;
+        this.d = d;         // Clock diameter
+        this.w = d * 0.05;  // Hands thickness
+        this.l = d * 0.4;   // Hands length
         this.hh = 0;
         this.mm = 0;
         this.toHH = 15;
@@ -14,17 +16,17 @@ class Clock {
         push();
         translate(this.x, this.y);
         rotate((hand * 6) - 90);
-        strokeWeight(4);
-        line(0, 0,this.d * 2 / 5, 0);
+        strokeWeight(this.w);
+        line(0, 0,this.l, 0);
         pop();
     }
 
     render() {
-        stroke(0);
+        stroke("#444444");
         noFill();
         ellipse(this.x, this.y, this.d);
-        stroke(50);
-        fill(240);
+        stroke("#000000");
+        fill("#eeeeee");
         ellipse(this.x, this.y, this.d - 4);
         this._drawHand(this.mm);
         this._drawHand(this.hh);

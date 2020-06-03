@@ -26,17 +26,18 @@ function setup() {
 function windowResized() {
     clockOfClocks = new ClockOfClocks(windowWidth, windowHeight);
     resizeCanvas(clockOfClocks.width, clockOfClocks.height);
+    clockOfClocks.setTargetTime();
 }
 
 function draw() {
-    background(204, 204, 204);
+    background("#cccccc");
     // Show clocks.
     clockOfClocks.display();
     // Show FPS and detail on clock/screen sizes.
     if (SHOW_FPS) {
-        fill(0, 255, 0);
+        fill("#00ff00");
         text(`FPS: ${round(getFrameRate(), 2)}
-Time: ${hour()}:${minute()}:${second()}
+Time: ${str(hour()).padStart(2, "0") }:${str(minute()).padStart(2, "0") }:${str(second()).padStart(2, "0") }
 Clocks: ${HORIZONTAL_CLOCKS} x ${VERTICAL_CLOCKS}
 Canvas: ${clockOfClocks.width} x ${clockOfClocks.height}
 Window: ${windowWidth} x ${windowHeight}`, 10, clockOfClocks.height - 50);
