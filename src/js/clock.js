@@ -44,4 +44,9 @@ class Clock {
         this.toMM = toMM;
     }
 
+    swapTargets() {
+        let temp = this.toHH;
+        this.toHH = this.toMM;
+        this.toMM = temp;
+    }
 }

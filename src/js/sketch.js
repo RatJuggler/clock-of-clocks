@@ -1,21 +1,21 @@
+const SECOND = 1000;
 const MINUTE = 60 * 1000;
-
-function setTargetTime() {
-    let time = str(hour()).padStart(2, "0") + ":" + str(minute()).padStart(2, "0");
-    console.log(time);
-    let offset = HORIZONTAL_CLOCKS;
-    for (let c of time) {
-        offset = clockOfClocks.targetDigit(c, offset);
-    }
-}
 
 function repeatEveryMinute() {
     let now = new Date();
     let delay = MINUTE - now % MINUTE;
-    console.log("Now: " + now + " Waiting: " + delay);
     setTimeout(() => {
-        setTargetTime();
+        clockOfClocks.setTargetTime();
         repeatEveryMinute();
+    }, delay);
+}
+
+function repeatEverySecond() {
+    let now = new Date();
+    let delay = SECOND - now % SECOND;
+    setTimeout(() => {
+        clockOfClocks.setTargetSeconds();
+        repeatEverySecond();
     }, delay);
 }
 
@@ -24,6 +24,7 @@ function setup() {
     createCanvas(clockOfClocks.width, clockOfClocks.height);
     frameRate(30);
     angleMode(DEGREES);
+    repeatEverySecond();
     repeatEveryMinute();
 }
 
@@ -33,14 +34,11 @@ function windowResized() {
 }
 
 function draw() {
-    background(220);
-
+    background(204, 204, 204);
     // Show clocks.
     clockOfClocks.display();
-
     // Show FPS and detail on clock/screen sizes.
-    stroke(220);
-    fill(0);
+    fill(0, 255, 0);
     text(`FPS: ${round(getFrameRate(), 2)}
 Time: ${hour()}:${minute()}:${second()}
 Clocks: ${HORIZONTAL_CLOCKS} x ${VERTICAL_CLOCKS}

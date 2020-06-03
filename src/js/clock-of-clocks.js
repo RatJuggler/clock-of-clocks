@@ -18,7 +18,15 @@ class ClockOfClocks {
         }
     }
 
-    targetDigit(digit, offset) {
+    setTargetSeconds() {
+        let offset = (VERTICAL_CLOCKS - 1) * HORIZONTAL_CLOCKS;
+        for (let width = 0; width < HORIZONTAL_CLOCKS; width++) {
+            this.clocks[width].swapTargets();
+            this.clocks[offset + width].swapTargets();
+        }
+    }
+
+    _targetDigit(digit, offset) {
         for (let height = 0; height < DIGITS[digit].height; height++) {
             for (let width = 0; width < DIGITS[digit].width; width++) {
                 let clockIdx = offset + (height * HORIZONTAL_CLOCKS) + width;
@@ -27,6 +35,14 @@ class ClockOfClocks {
             }
         }
         return offset + DIGITS[digit].width;
+    }
+
+    setTargetTime() {
+        let time = str(hour()).padStart(2, "0") + ":" + str(minute()).padStart(2, "0");
+        let offset = HORIZONTAL_CLOCKS;
+        for (let c of time) {
+            offset = this._targetDigit(c, offset);
+        }
     }
 
     display() {
