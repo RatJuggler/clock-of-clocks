@@ -18,14 +18,17 @@ class ClockOfClocks {
                 this.clocks.push(new Clock( offset + (clockSize * xClocks), offset + (clockSize * yClocks), clockSize));
             }
         }
+        this.targetSet = false;
     }
 
-    setTargetSeconds() {
-        let offset = (VERTICAL_CLOCKS - 1) * HORIZONTAL_CLOCKS;
-        for (let width = 0; width < HORIZONTAL_CLOCKS; width++) {
-            this.clocks[width].swapTargets();
-            this.clocks[offset + width].swapTargets();
+    setTargetRandom() {
+        if (this.targetSet) {
+            return;
         }
+        this.targetSet = true;
+        this.clocks.forEach(clock => {
+            clock.setTarget(int(random(0, 60)), int(random(0, 60)));
+        })
     }
 
     _targetDigit(digit, offset) {
@@ -42,18 +45,26 @@ class ClockOfClocks {
     }
 
     setTargetTime() {
+        this.targetSet = true;
         let time = str(hour()).padStart(2, "0") + ":" + str(minute()).padStart(2, "0");
         let offset = HORIZONTAL_CLOCKS;
         for (let c of time) {
             offset = this._targetDigit(c, offset);
         }
+        offset = (VERTICAL_CLOCKS - 1) * HORIZONTAL_CLOCKS;
+        for (let width = 0; width < HORIZONTAL_CLOCKS; width++) {
+            this.clocks[width].setTarget(0, 0);
+            this.clocks[offset + width].setTarget(0, 0);
+        }
     }
 
     display() {
+        let anyUpdates = false;
         this.clocks.forEach(clock => {
-            clock.update();
+            anyUpdates = clock.update() || anyUpdates;
             clock.render();
         })
+        this.targetSet = anyUpdates;
     }
 
 }

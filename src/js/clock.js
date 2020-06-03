@@ -33,22 +33,20 @@ class Clock {
     }
 
     update() {
+        let updated = false;
         if (this.hh !== this.toHH) {
             this.hh = (this.hh + 1) % 60;
+            updated = true;
         }
         if (this.mm !== this.toMM) {
             this.mm = (this.mm + 1) % 60;
+            updated = true;
         }
+        return updated;
     }
 
     setTarget(toHH, toMM) {
         this.toHH = toHH;
         this.toMM = toMM;
-    }
-
-    swapTargets() {
-        let temp = this.toHH;
-        this.toHH = this.toMM;
-        this.toMM = temp;
     }
 }

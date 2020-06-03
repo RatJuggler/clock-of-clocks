@@ -1,5 +1,6 @@
-const SECOND = 1000;
-const MINUTE = 60 * 1000;
+const ONE_SECOND = 1000;
+const TWO_SECONDS = 2 * ONE_SECOND;
+const FIVE_SECONDS = 5 * ONE_SECOND;
 const SHOW_FPS = true;
 
 let clockOfClocks;
@@ -18,8 +19,8 @@ function setup() {
     createCanvas(clockOfClocks.width, clockOfClocks.height);
     frameRate(30);
     angleMode(DEGREES);
-    repeatEvery(() => clockOfClocks.setTargetSeconds(), SECOND);
-    repeatEvery(() => clockOfClocks.setTargetTime(), MINUTE);
+    repeatEvery(() => clockOfClocks.setTargetRandom(), TWO_SECONDS);
+    repeatEvery(() => clockOfClocks.setTargetTime(), FIVE_SECONDS);
     clockOfClocks.setTargetTime();
 }
 
