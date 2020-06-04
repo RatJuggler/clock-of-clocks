@@ -1,5 +1,5 @@
 const ONE_SECOND = 1000;
-const SHOW_TIME_INTERVAL = 12 * ONE_SECOND;
+const SHOW_TIME_INTERVAL = 15 * ONE_SECOND;
 const SHOW_FPS = true;
 
 let clockOfClocks;
