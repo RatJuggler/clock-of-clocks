@@ -59,6 +59,7 @@ class ClockOfClocks {
     }
 
     setTargetTime() {
+        // Potential race condition here.
         this.targetSet = true;
         // Time display to show.
         let time = str(hour()).padStart(2, "0") + ":" + str(minute()).padStart(2, "0");
@@ -78,13 +79,12 @@ class ClockOfClocks {
         if (this.targetAlreadySet()) {
             return;
         }
-        let pattern = random(PATTERNS.templates).layout;
-        let offset = 0;
-        for (let row of pattern) {
-            for (let c of row) {
+        let pattern = random(PATTERNS.templates);
+        for (let row = 0; row < pattern.layout.length; row++) {
+            let offset = row * HORIZONTAL_CLOCKS * pattern.height;
+            for (let c of pattern.layout[row]) {
                 offset = this._targetCopy(PATTERNS[c], offset);
             }
-            offset += HORIZONTAL_CLOCKS;
         }
     }
 
