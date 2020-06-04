@@ -12,7 +12,8 @@ class Clock {
         this.mm = 0;
         this.toHH = 15;
         this.toMM = 45;
-        this.direction = "forward";
+        this.hhDirection = "forward";
+        this.mmDirection = "forward";
     }
 
     _drawHand(hand) {
@@ -35,7 +36,7 @@ class Clock {
         this._drawHand(this.hh);
     }
 
-    _forward(current, target) {
+    forward(current, target) {
         if (this[current] !== target) {
             this[current] = (this[current] + 1) % 60;
             return true;
@@ -43,7 +44,7 @@ class Clock {
         return false;
     }
 
-    _backward(current, target) {
+    backward(current, target) {
         if (this[current] !== target) {
             this[current] = this[current] === 0 ? 59 : this[current] - 1;
             return true;
@@ -51,32 +52,24 @@ class Clock {
         return false;
     }
 
-    forward() {
-        let hhUpdated = this._forward("hh", this.toHH);
-        let mmUpdated = this._forward("mm", this.toMM);
-        return hhUpdated && mmUpdated;
-    }
-
-    backward() {
-        let hhUpdated = this._backward("hh", this.toHH);
-        let mmUpdated = this._backward("mm", this.toMM);
-        return hhUpdated && mmUpdated;
-    }
-
     update() {
-        return this[this.direction]();
+        let hhUpdated = this[this.hhDirection]("hh", this.toHH);
+        let mmUpdated = this[this.mmDirection]("mm", this.toMM);
+        return hhUpdated && mmUpdated;
     }
 
-    setTarget(toHH, toMM, direction = "forward") {
+    setTarget(toHH, toMM, hhDirection = "forward", mmDirection = "forward") {
         this.toHH = toHH;
         this.toMM = toMM;
-        this.direction = direction;
+        this.hhDirection = hhDirection;
+        this.mmDirection = mmDirection;
     }
 
     setRandomTarget() {
         this.toHH = int(random(0, 60));
         this.toMM = int(random(0, 60));
-        this.direction = random(DIRECTIONS);
+        this.mmDirection = random(DIRECTIONS);
+        this.hhDirection = random(DIRECTIONS);
     }
 
 }
