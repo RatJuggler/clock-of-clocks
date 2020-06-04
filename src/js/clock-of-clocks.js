@@ -20,14 +20,26 @@ class ClockOfClocks {
         }
         // This should be atomic.
         this.targetSet = false;
+        this.targetSetDelay = 0;
+    }
+
+    targetAlreadySet() {
+        // Potential race condition here.
+        if (this.targetSet) {
+            return true;
+        }
+        if (this.targetSetDelay > 0) {
+            this.targetSetDelay--;
+            return true;
+        }
+        this.targetSet = true;
+        return false;
     }
 
     setTargetRandom() {
-        // Potential race condition here.
-        if (this.targetSet) {
+        if (this.targetAlreadySet()) {
             return;
         }
-        this.targetSet = true;
         this.clocks.forEach(clock => {
             clock.setRandomTarget();
         })
@@ -63,11 +75,9 @@ class ClockOfClocks {
     }
 
     setTargetPattern() {
-        // Potential race condition here.
-        if (this.targetSet) {
+        if (this.targetAlreadySet()) {
             return;
         }
-        this.targetSet = true;
         let pattern = random(PATTERNS.templates).layout;
         let offset = 0;
         for (let row of pattern) {
@@ -84,7 +94,10 @@ class ClockOfClocks {
             anyUpdates = clock.update() || anyUpdates;
             clock.render();
         })
-        this.targetSet = anyUpdates;
+        if (this.targetSet && !anyUpdates) {
+            this.targetSetDelay = 30;
+            this.targetSet = false;
+        }
     }
 
 }
