@@ -38,7 +38,7 @@ class ClockOfClocks {
         let clockIdx = offset;
         for (let height = 0; height < from.height; height++) {
             for (let width = 0; width < from.width; width++) {
-                this.clocks[clockIdx + width].setTarget(from.shape[digitIdx].hh, from.shape[digitIdx].mm);
+                this.clocks[clockIdx + width].setTarget(from.shape[digitIdx].hh, from.shape[digitIdx].mm, from.hhDirection, from.mmDirection);
                 digitIdx++;
             }
             clockIdx += HORIZONTAL_CLOCKS;
