@@ -1,3 +1,5 @@
+const DIRECTIONS = ["forward", "backward"];
+
 class Clock {
 
     constructor(x, y, d) {
@@ -65,10 +67,16 @@ class Clock {
         return this[this.direction]();
     }
 
-    setTarget(toHH, toMM, direction) {
+    setTarget(toHH, toMM, direction = "forward") {
         this.toHH = toHH;
         this.toMM = toMM;
         this.direction = direction;
+    }
+
+    setRandomTarget() {
+        this.toHH = int(random(0, 60));
+        this.toMM = int(random(0, 60));
+        this.direction = random(DIRECTIONS);
     }
 
 }
