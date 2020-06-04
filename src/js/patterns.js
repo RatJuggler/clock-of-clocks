@@ -1,4 +1,21 @@
 const PATTERNS = {
+    "templates": [
+        {
+            "width": 2,
+            "height": 2,
+            "layout": ["AAAAAAAAA", "AAAAAAAAA", "AAAAAAAAA", "AAAAAAAAA"]
+        },
+        {
+            "width": 2,
+            "height": 2,
+            "layout": ["BBBBBBBBB", "BAAAAAAAB", "BAAAAAAAB", "BBBBBBBBB"]
+        },
+        {
+            "width": 2,
+            "height": 2,
+            "layout": ["CCCCCCCCC", "CCCCCCCCC", "CCCCCCCCC", "CCCCCCCCC"]
+        }
+    ],
     "A": {
         "width": 2,
         "height": 2,

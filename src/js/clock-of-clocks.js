@@ -68,10 +68,10 @@ class ClockOfClocks {
             return;
         }
         this.targetSet = true;
-        let pattern = "ABCABCABC";
+        let pattern = random(PATTERNS.templates).layout;
         let offset = 0;
-        for (let height = 0; height < VERTICAL_CLOCKS - 1; height += 2) {
-            for (let c of pattern) {
+        for (let row of pattern) {
+            for (let c of row) {
                 offset = this._targetCopy(PATTERNS[c], offset);
             }
             offset += HORIZONTAL_CLOCKS;
