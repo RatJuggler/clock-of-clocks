@@ -1,6 +1,6 @@
 const ONE_SECOND = 1000;
-const TWO_SECONDS = 2 * ONE_SECOND;
-const FIVE_SECONDS = 5 * ONE_SECOND;
+const SHOW_PATTERN_INTERVAL = 4 * ONE_SECOND;
+const SHOW_TIME_INTERVAL = 10 * ONE_SECOND;
 const SHOW_FPS = true;
 
 let clockOfClocks;
@@ -19,9 +19,8 @@ function setup() {
     createCanvas(clockOfClocks.width, clockOfClocks.height);
     frameRate(30);
     angleMode(DEGREES);
-    // repeatEvery(() => clockOfClocks.setTargetRandom(), TWO_SECONDS);
-    repeatEvery(() => clockOfClocks.setTargetPattern(), TWO_SECONDS);
-    repeatEvery(() => clockOfClocks.setTargetTime(), FIVE_SECONDS);
+    repeatEvery(() => clockOfClocks.setTargetPattern(), SHOW_PATTERN_INTERVAL);
+    repeatEvery(() => clockOfClocks.setTargetTime(), SHOW_TIME_INTERVAL);
     clockOfClocks.setTargetTime();
 }
 
