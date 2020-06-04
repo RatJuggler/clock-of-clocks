@@ -10,6 +10,7 @@ class Clock {
         this.mm = 0;
         this.toHH = 15;
         this.toMM = 45;
+        this.direction = "forward";
     }
 
     _drawHand(hand) {
@@ -32,21 +33,42 @@ class Clock {
         this._drawHand(this.hh);
     }
 
-    update() {
-        let updated = false;
-        if (this.hh !== this.toHH) {
-            this.hh = (this.hh + 1) % 60;
-            updated = true;
+    _forward(current, target) {
+        if (this[current] !== target) {
+            this[current] = (this[current] + 1) % 60;
+            return true;
         }
-        if (this.mm !== this.toMM) {
-            this.mm = (this.mm + 1) % 60;
-            updated = true;
-        }
-        return updated;
+        return false;
     }
 
-    setTarget(toHH, toMM) {
+    _backward(current, target) {
+        if (this[current] !== target) {
+            this[current] = this[current] === 0 ? 59 : this[current] - 1;
+            return true;
+        }
+        return false;
+    }
+
+    forward() {
+        let hhUpdated = this._forward("hh", this.toHH);
+        let mmUpdated = this._forward("mm", this.toMM);
+        return hhUpdated && mmUpdated;
+    }
+
+    backward() {
+        let hhUpdated = this._backward("hh", this.toHH);
+        let mmUpdated = this._backward("mm", this.toMM);
+        return hhUpdated && mmUpdated;
+    }
+
+    update() {
+        return this[this.direction]();
+    }
+
+    setTarget(toHH, toMM, direction) {
         this.toHH = toHH;
         this.toMM = toMM;
+        this.direction = direction;
     }
+
 }
