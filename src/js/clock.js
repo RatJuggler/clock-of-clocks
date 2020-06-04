@@ -38,7 +38,7 @@ class Clock {
 
     forward(current, target) {
         if (this[current] !== target) {
-            this[current] = (this[current] + 1) % 60;
+            this[current] = this[current] === 59 ? 0 : this[current] + 1;
             return true;
         }
         return false;
@@ -66,10 +66,7 @@ class Clock {
     }
 
     setRandomTarget() {
-        this.toHH = int(random(0, 60));
-        this.toMM = int(random(0, 60));
-        this.mmDirection = random(DIRECTIONS);
-        this.hhDirection = random(DIRECTIONS);
+        this.setTarget(int(random(0, 60)), int(random(0, 60)), random(DIRECTIONS), random(DIRECTIONS));
     }
 
 }
