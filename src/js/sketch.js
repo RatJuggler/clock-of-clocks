@@ -1,9 +1,8 @@
 const ONE_SECOND = 1000;
-const SHOW_TIME_INTERVAL = 10 * ONE_SECOND;
+const SHOW_TIME_INTERVAL = 12 * ONE_SECOND;
 const SHOW_FPS = true;
 
 let clockOfClocks;
-let showRandom = true;
 
 function repeatEvery(handler, interval) {
     let now = new Date();
@@ -31,13 +30,11 @@ function windowResized() {
 
 function draw() {
     background("#cccccc");
-    // Randomly chaos or pattern.
-    if (showRandom) {
+    // Randomly show chaos or pattern.
+    if (random() > 0.8) {
         clockOfClocks.setTargetRandom();
-        showRandom = false;
     } else {
         clockOfClocks.setTargetPattern();
-        showRandom = true;
     }
     // Show clocks.
     clockOfClocks.display();
