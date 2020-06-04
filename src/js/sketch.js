@@ -19,7 +19,8 @@ function setup() {
     createCanvas(clockOfClocks.width, clockOfClocks.height);
     frameRate(30);
     angleMode(DEGREES);
-    repeatEvery(() => clockOfClocks.setTargetRandom(), TWO_SECONDS);
+    // repeatEvery(() => clockOfClocks.setTargetRandom(), TWO_SECONDS);
+    repeatEvery(() => clockOfClocks.setTargetPattern(), TWO_SECONDS);
     repeatEvery(() => clockOfClocks.setTargetTime(), FIVE_SECONDS);
     clockOfClocks.setTargetTime();
 }

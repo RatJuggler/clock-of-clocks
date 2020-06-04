@@ -33,17 +33,17 @@ class ClockOfClocks {
         })
     }
 
-    _targetDigit(digit, offset) {
+    _targetCopy(from, offset) {
         let digitIdx = 0;
         let clockIdx = offset;
-        for (let height = 0; height < DIGITS[digit].height; height++) {
-            for (let width = 0; width < DIGITS[digit].width; width++) {
-                this.clocks[clockIdx + width].setTarget(DIGITS[digit].shape[digitIdx].hh, DIGITS[digit].shape[digitIdx].mm);
+        for (let height = 0; height < from.height; height++) {
+            for (let width = 0; width < from.width; width++) {
+                this.clocks[clockIdx + width].setTarget(from.shape[digitIdx].hh, from.shape[digitIdx].mm);
                 digitIdx++;
             }
             clockIdx += HORIZONTAL_CLOCKS;
         }
-        return offset + DIGITS[digit].width;
+        return offset + from.width;
     }
 
     setTargetTime() {
@@ -52,13 +52,29 @@ class ClockOfClocks {
         let time = str(hour()).padStart(2, "0") + ":" + str(minute()).padStart(2, "0");
         let offset = HORIZONTAL_CLOCKS;
         for (let c of time) {
-            offset = this._targetDigit(c, offset);
+            offset = this._targetCopy(DIGITS[c], offset);
         }
         // Do something with the top and bottom rows.
         offset = (VERTICAL_CLOCKS - 1) * HORIZONTAL_CLOCKS;
         for (let width = 0; width < HORIZONTAL_CLOCKS; width++) {
             this.clocks[width].setTarget(0, 0);
             this.clocks[offset + width].setTarget(0, 0);
+        }
+    }
+
+    setTargetPattern() {
+        // Potential race condition here.
+        if (this.targetSet) {
+            return;
+        }
+        this.targetSet = true;
+        let pattern = "ABCABCABC";
+        let offset = 0;
+        for (let height = 0; height < VERTICAL_CLOCKS - 1; height += 2) {
+            for (let c of pattern) {
+                offset = this._targetCopy(PATTERNS[c], offset);
+            }
+            offset += HORIZONTAL_CLOCKS;
         }
     }
 
