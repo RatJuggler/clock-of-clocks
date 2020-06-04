@@ -1,5 +1,4 @@
 const ONE_SECOND = 1000;
-const SHOW_PATTERN_INTERVAL = 4 * ONE_SECOND;
 const SHOW_TIME_INTERVAL = 10 * ONE_SECOND;
 const SHOW_FPS = true;
 
@@ -17,9 +16,8 @@ function repeatEvery(handler, interval) {
 function setup() {
     clockOfClocks = new ClockOfClocks(windowWidth, windowHeight);
     createCanvas(clockOfClocks.width, clockOfClocks.height);
-    frameRate(30);
+    frameRate(20);
     angleMode(DEGREES);
-    repeatEvery(() => clockOfClocks.setTargetPattern(), SHOW_PATTERN_INTERVAL);
     repeatEvery(() => clockOfClocks.setTargetTime(), SHOW_TIME_INTERVAL);
     clockOfClocks.setTargetTime();
 }
@@ -32,6 +30,12 @@ function windowResized() {
 
 function draw() {
     background("#cccccc");
+    // Randomly chaos or pattern.
+    if (random() > 0.5) {
+        clockOfClocks.setTargetRandom();
+    } else {
+        clockOfClocks.setTargetPattern();
+    }
     // Show clocks.
     clockOfClocks.display();
     // Show FPS and detail on clock/screen sizes.
