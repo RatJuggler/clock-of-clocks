@@ -32,11 +32,16 @@ function windowResized() {
 function draw() {
     frameRate(TARGET_FPS);
     background("#cccccc");
-    // Randomly show chaos or pattern.
-    if (random() > 0.8) {
-        clockOfClocks.setTargetRandom();
-    } else {
-        clockOfClocks.setTargetPattern();
+    if (clockOfClocks.freeToSetNewTarget()) {
+        // Randomly show chaos or pattern.
+        let chance = random();
+        if (chance > 0.9) {
+            clockOfClocks.setTargetRandom();
+        } else if (chance > 0.8) {
+            clockOfClocks.setTargetSwap();
+        } else {
+            clockOfClocks.setTargetPattern();
+        }
     }
     // Show clocks.
     clockOfClocks.display();

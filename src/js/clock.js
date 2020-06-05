@@ -69,4 +69,13 @@ class Clock {
         this.setTarget(int(random(0, 60)), int(random(0, 60)), random(DIRECTIONS), random(DIRECTIONS));
     }
 
+    setSwapTarget() {
+        let tempHH = this.toHH;
+        let tempHHdirection = this.hhDirection;
+        this.toHH = this.toMM;
+        this.toMM = tempHH;
+        this.hhDirection = this.mmDirection;
+        this.mmDirection = tempHHdirection
+    }
+
 }

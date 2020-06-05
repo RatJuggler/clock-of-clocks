@@ -23,25 +23,28 @@ class ClockOfClocks {
         this.targetSetDelay = 0;
     }
 
-    targetAlreadySet() {
+    freeToSetNewTarget() {
         // Potential race condition here.
         if (this.targetSet) {
-            return true;
+            return false;
         }
         if (this.targetSetDelay > 0) {
             this.targetSetDelay--;
-            return true;
+            return false;
         }
         this.targetSet = true;
-        return false;
+        return true;
     }
 
     setTargetRandom() {
-        if (this.targetAlreadySet()) {
-            return;
-        }
         this.clocks.forEach(clock => {
             clock.setRandomTarget();
+        })
+    }
+
+    setTargetSwap() {
+        this.clocks.forEach(clock => {
+            clock.setSwapTarget();
         })
     }
 
@@ -62,7 +65,7 @@ class ClockOfClocks {
         // Potential race condition here.
         this.targetSet = true;
         // Time display to show.
-        let time = str(hour()).padStart(2, "0") + ":" + str(minute()).padStart(2, "0");
+        let time = hour().toString().padStart(2, "0") + ":" + minute().toString().padStart(2, "0");
         let offset = HORIZONTAL_CLOCKS;
         for (let c of time) {
             offset = this._targetCopy(DIGITS[c], offset);
@@ -76,9 +79,6 @@ class ClockOfClocks {
     }
 
     setTargetPattern() {
-        if (this.targetAlreadySet()) {
-            return;
-        }
         let pattern = random(PATTERNS.templates);
         for (let row = 0; row < pattern.layout.length; row++) {
             let offset = row * HORIZONTAL_CLOCKS * pattern.height;
