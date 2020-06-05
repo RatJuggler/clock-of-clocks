@@ -42,11 +42,12 @@ function draw() {
     clockOfClocks.display();
     // Show FPS and detail on clock/screen sizes.
     if (DEBUG) {
+        textSize(32);
         fill("#00ff00");
         text(`FPS: ${round(getFrameRate(), 2)}
 Time: ${str(hour()).padStart(2, "0") }:${str(minute()).padStart(2, "0") }:${str(second()).padStart(2, "0") }
 Clocks: ${HORIZONTAL_CLOCKS} x ${VERTICAL_CLOCKS}
 Canvas: ${clockOfClocks.width} x ${clockOfClocks.height}
-Window: ${windowWidth} x ${windowHeight}`, 10, clockOfClocks.height - 50);
+Window: ${windowWidth} x ${windowHeight}`, 8, clockOfClocks.height - 128);
     }
 }
