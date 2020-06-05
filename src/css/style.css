@@ -5,8 +5,56 @@ html, body {
   height: 100%;
 }
 
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#top-menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #24292e;
+}
+
+#top-menu li {
+  float: left;
+}
+
+#top-menu li a {
+  display: block;
+  color: #ffffff;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+#top-menu li:last-child {
+  float:right;
+}
+
+#top-menu li a:hover:not(.brand) {
+  background-color: #666666;
+}
+
+.brand {
+  background-color: #34ba3a;
+}
+
+canvas {
+  border: 1px solid #000000;
+}
+
+#sketch-container {
+  position: relative;
+}
+
+#sketch-container canvas, #controls-overlay {
+  position: absolute;
+}
+
+.controls--show {
+  visibility: visible;
+  opacity:1;
+}
+
+.controls--hide {
+  transition: visibility 0s linear 1s, opacity 1s ease;
+  visibility: hidden;
+  opacity:0;
 }

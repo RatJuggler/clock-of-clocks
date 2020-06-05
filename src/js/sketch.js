@@ -15,7 +15,7 @@ function repeatEvery(handler, interval) {
 
 function setup() {
     clockOfClocks = new ClockOfClocks(windowWidth, windowHeight);
-    createCanvas(clockOfClocks.width, clockOfClocks.height);
+    createCanvas(clockOfClocks.width, clockOfClocks.height).parent("canvas-container");
     frameRate(20);
     angleMode(DEGREES);
     repeatEvery(() => clockOfClocks.setTargetTime(), SHOW_TIME_INTERVAL);

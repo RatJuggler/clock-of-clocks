@@ -12,7 +12,27 @@
   <script src="js/clock.js"></script>
   <script src="js/clock-of-clocks.js"></script>
   <script src="js/sketch.js"></script>
+  <script>
+    function toggleControls() {
+        let tc = document.getElementById("controls-overlay");
+        tc.className = (tc.className === "controls--hide") ? "controls--show" : "controls--hide";
+    }
+  </script>
 </head>
 <body>
+  <div id="top-menu">
+    <ul>
+      <li><a class="brand" href="#home">Clock-of-Clocks</a></li>
+      <li><a href="javascript:toggleControls()">Controls</a></li>
+      <li><a href="#github">GitHub</a></li>
+    </ul>
+  </div>
+  <div id="sketch-container">
+    <div id="canvas-container"></div>
+    <div id="controls-overlay" class="controls--hide">
+      <input id="debug-control" type="range" min="0" max="1"><label for="debug-control">Debug</label>
+      <input id="fps-control" type="range" min="1" max="60"><label for="fps-control">FPS</label>
+    </div>
+  </div>
 </body>
 </html>
