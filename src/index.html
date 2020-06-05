@@ -23,10 +23,15 @@
   </div>
   <div id="sketch-container">
     <div id="canvas-container"></div>
-    <div id="controls-overlay" class="controls--hide">
-      <p><label for="debug-control">Debug</label><input id="debug-control" type="range" list="debug-range" min="0" max="1"></p>
-      <p><label for="fps-control">FPS</label><input id="fps-control" type="range" list="fps-range" min="10" max="60" step="10"></p>
-    </div>
+    <fieldset id="controls-overlay" class="controls--hide">
+      <label for="debug-control">Debug:</label>
+      <input id="debug-control" type="range" list="debug-range" min="0" max="1">
+      <span id="debug-value"></span>
+      <br/>
+      <label for="fps-control">FPS:</label>
+      <input id="fps-control" type="range" list="fps-range" min="10" max="60" step="10">
+      <span id="fps-value"></span>
+    </fieldset>
   </div>
   <datalist id="debug-range">
     <option value="0" label="Off"></option>
@@ -47,13 +52,19 @@
       }
       const debugControl = document.getElementById("debug-control");
       debugControl.value = DEBUG ? "1" : "0";
+      const debugValue = document.getElementById("debug-value");
+      debugValue.innerText = DEBUG ? "On" : "Off";
       debugControl.addEventListener("input", function() {
           DEBUG = debugControl.value === "1";
+          debugValue.innerText = DEBUG ? "On" : "Off";
       });
       const fpsControl = document.getElementById("fps-control");
       fpsControl.value = TARGET_FPS;
+      const fpsValue = document.getElementById("fps-value");
+      fpsValue.innerText = TARGET_FPS.toString();
       fpsControl.addEventListener("input", function() {
           TARGET_FPS = int(fpsControl.value);
+          fpsValue.innerText = TARGET_FPS.toString();
       });
   </script>
 </html>
