@@ -19,32 +19,21 @@ function setup() {
     clockOfClocks = new ClockOfClocks(windowWidth, windowHeight);
     createCanvas(clockOfClocks.width, clockOfClocks.height).parent("canvas-container");
     angleMode(DEGREES);
-    repeatEvery(() => clockOfClocks.setTargetTime(), SHOW_TIME_INTERVAL);
-    clockOfClocks.setTargetTime();
+    repeatEvery(() => clockOfClocks.setTime(), SHOW_TIME_INTERVAL);
+    clockOfClocks.setTime();
 }
 
 function windowResized() {
     clockOfClocks = new ClockOfClocks(windowWidth, windowHeight);
     resizeCanvas(clockOfClocks.width, clockOfClocks.height);
-    clockOfClocks.setTargetTime();
+    clockOfClocks.setTime();
 }
 
 function draw() {
     frameRate(TARGET_FPS);
     background("#cccccc");
-    if (clockOfClocks.freeToSetNewTarget()) {
-        // Randomly show chaos or pattern.
-        let chance = random();
-        if (chance > 0.9) {
-            clockOfClocks.setTargetRandom();
-        } else if (chance > 0.8) {
-            clockOfClocks.setTargetSwap();
-        } else {
-            clockOfClocks.setTargetPattern();
-        }
-    }
-    // Show clocks.
-    clockOfClocks.display();
+    // Update and show clocks.
+    clockOfClocks.process();
     // Show FPS and detail on clock/screen sizes.
     if (DEBUG) {
         textSize(32);

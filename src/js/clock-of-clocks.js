@@ -5,9 +5,7 @@ class ClockOfClocks {
 
     constructor(windowWidth, windowHeight) {
         // Work out how big each clock and the canvas will be given the current window size.
-        let clockWidth = int(windowWidth / HORIZONTAL_CLOCKS);
-        let clockHeight = int(windowHeight / VERTICAL_CLOCKS);
-        let clockSize = min(clockWidth, clockHeight);
+        let clockSize = min(int(windowWidth / HORIZONTAL_CLOCKS), int(windowHeight / VERTICAL_CLOCKS));
         this.width = clockSize * HORIZONTAL_CLOCKS + 1;
         this.height = clockSize * VERTICAL_CLOCKS + 1;
         // Initialise the clocks.
@@ -23,7 +21,7 @@ class ClockOfClocks {
         this.targetSetDelay = 0;
     }
 
-    freeToSetNewTarget() {
+    _freeToSetNewTarget() {
         // Potential race condition here.
         if (this.targetSet) {
             return false;
@@ -36,24 +34,12 @@ class ClockOfClocks {
         return true;
     }
 
-    setTargetRandom() {
-        this.clocks.forEach(clock => {
-            clock.setRandomTarget();
-        })
-    }
-
-    setTargetSwap() {
-        this.clocks.forEach(clock => {
-            clock.setSwapTarget();
-        })
-    }
-
-    _targetCopy(from, offset) {
+    _copy(from, offset) {
         let digitIdx = 0;
         let clockIdx = offset;
         for (let height = 0; height < from.height; height++) {
             for (let width = 0; width < from.width; width++) {
-                this.clocks[clockIdx + width].setTarget(from.shape[digitIdx].hh, from.shape[digitIdx].mm, from.hhDirection, from.mmDirection);
+                this.clocks[clockIdx + width].setHands(from.shape[digitIdx].hh, from.shape[digitIdx].mm, from.hhDirection, from.mmDirection);
                 digitIdx++;
             }
             clockIdx += HORIZONTAL_CLOCKS;
@@ -61,34 +47,53 @@ class ClockOfClocks {
         return offset + from.width;
     }
 
-    setTargetTime() {
+    setTime() {
         // Potential race condition here.
         this.targetSet = true;
         // Time display to show.
         let time = hour().toString().padStart(2, "0") + ":" + minute().toString().padStart(2, "0");
         let offset = HORIZONTAL_CLOCKS;
         for (let c of time) {
-            offset = this._targetCopy(DIGITS[c], offset);
+            offset = this._copy(DIGITS[c], offset);
         }
         // Do something with the top and bottom rows.
         offset = (VERTICAL_CLOCKS - 1) * HORIZONTAL_CLOCKS;
         for (let width = 0; width < HORIZONTAL_CLOCKS; width++) {
-            this.clocks[width].setTarget(0, 0);
-            this.clocks[offset + width].setTarget(0, 0);
+            this.clocks[width].setHands(0, 0);
+            this.clocks[offset + width].setHands(0, 0);
         }
     }
 
-    setTargetPattern() {
+    _setPattern() {
         let pattern = random(PATTERNS.templates);
         for (let row = 0; row < pattern.layout.length; row++) {
             let offset = row * HORIZONTAL_CLOCKS * pattern.height;
             for (let c of pattern.layout[row]) {
-                offset = this._targetCopy(PATTERNS[c], offset);
+                offset = this._copy(PATTERNS[c], offset);
             }
         }
     }
 
-    display() {
+    _setTarget() {
+        // Randomly show chaos or pattern.
+        let chance = random();
+        if (chance > 0.9) {
+            this.clocks.forEach(clock => {
+                clock.setRandomHands();
+            })
+        } else if (chance > 0.8) {
+            this.clocks.forEach(clock => {
+                clock.setSwapHands();
+            })
+        } else {
+            this._setPattern();
+        }
+    }
+
+    process() {
+        if (this._freeToSetNewTarget()) {
+            this._setTarget();
+        }
         let anyUpdates = false;
         this.clocks.forEach(clock => {
             anyUpdates = clock.update() || anyUpdates;
