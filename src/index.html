@@ -25,7 +25,7 @@
     <div id="canvas-container"></div>
     <div id="controls-overlay" class="controls--hide">
       <p><label for="debug-control">Debug</label><input id="debug-control" type="range" list="debug-range" min="0" max="1"></p>
-      <p><label for="fps-control">FPS</label><input id="fps-control" type="range" list="fps-range" min="0" max="60"></p>
+      <p><label for="fps-control">FPS</label><input id="fps-control" type="range" list="fps-range" min="10" max="60" step="10"></p>
     </div>
   </div>
   <datalist id="debug-range">
@@ -33,8 +33,7 @@
     <option value="1" label="On"></option>
   </datalist>
   <datalist id="fps-range">
-    <option value="0" label="0"></option>
-    <option value="10"></option>
+    <option value="10" label="10"></option>
     <option value="20"></option>
     <option value="30" label="30"></option>
     <option value="40"></option>
@@ -43,12 +42,18 @@
   </datalist></body>
   <script>
       function toggleControls() {
-          let tc = document.getElementById("controls-overlay");
-          tc.className = (tc.className === "controls--hide") ? "controls--show" : "controls--hide";
+          let co = document.getElementById("controls-overlay");
+          co.className = (co.className === "controls--hide") ? "controls--show" : "controls--hide";
       }
-      let dc = document.getElementById("debug-control");
-      dc.value = DEBUG ? "1" : "0";
-      let fc = document.getElementById("fps-control");
-      fc.value = TARGET_FPS;
+      const debugControl = document.getElementById("debug-control");
+      debugControl.value = DEBUG ? "1" : "0";
+      debugControl.addEventListener("input", function() {
+          DEBUG = debugControl.value === "1";
+      });
+      const fpsControl = document.getElementById("fps-control");
+      fpsControl.value = TARGET_FPS;
+      fpsControl.addEventListener("input", function() {
+          TARGET_FPS = int(fpsControl.value);
+      });
   </script>
 </html>

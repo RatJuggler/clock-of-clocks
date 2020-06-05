@@ -18,7 +18,6 @@ function repeatEvery(handler, interval) {
 function setup() {
     clockOfClocks = new ClockOfClocks(windowWidth, windowHeight);
     createCanvas(clockOfClocks.width, clockOfClocks.height).parent("canvas-container");
-    frameRate(TARGET_FPS);
     angleMode(DEGREES);
     repeatEvery(() => clockOfClocks.setTargetTime(), SHOW_TIME_INTERVAL);
     clockOfClocks.setTargetTime();
@@ -31,6 +30,7 @@ function windowResized() {
 }
 
 function draw() {
+    frameRate(TARGET_FPS);
     background("#cccccc");
     // Randomly show chaos or pattern.
     if (random() > 0.8) {
