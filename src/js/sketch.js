@@ -1,6 +1,8 @@
 const ONE_SECOND = 1000;
 const SHOW_TIME_INTERVAL = 15 * ONE_SECOND;
-const SHOW_FPS = true;
+
+let DEBUG = false;
+let TARGET_FPS = 20;
 
 let clockOfClocks;
 
@@ -16,7 +18,7 @@ function repeatEvery(handler, interval) {
 function setup() {
     clockOfClocks = new ClockOfClocks(windowWidth, windowHeight);
     createCanvas(clockOfClocks.width, clockOfClocks.height).parent("canvas-container");
-    frameRate(20);
+    frameRate(TARGET_FPS);
     angleMode(DEGREES);
     repeatEvery(() => clockOfClocks.setTargetTime(), SHOW_TIME_INTERVAL);
     clockOfClocks.setTargetTime();
@@ -39,7 +41,7 @@ function draw() {
     // Show clocks.
     clockOfClocks.display();
     // Show FPS and detail on clock/screen sizes.
-    if (SHOW_FPS) {
+    if (DEBUG) {
         fill("#00ff00");
         text(`FPS: ${round(getFrameRate(), 2)}
 Time: ${str(hour()).padStart(2, "0") }:${str(minute()).padStart(2, "0") }:${str(second()).padStart(2, "0") }

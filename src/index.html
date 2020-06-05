@@ -12,27 +12,43 @@
   <script src="js/clock.js"></script>
   <script src="js/clock-of-clocks.js"></script>
   <script src="js/sketch.js"></script>
-  <script>
-    function toggleControls() {
-        let tc = document.getElementById("controls-overlay");
-        tc.className = (tc.className === "controls--hide") ? "controls--show" : "controls--hide";
-    }
-  </script>
 </head>
 <body>
   <div id="top-menu">
     <ul>
-      <li><a class="brand" href="#home">Clock-of-Clocks</a></li>
+      <li><a class="brand" href="#">Clock-of-Clocks</a></li>
       <li><a href="javascript:toggleControls()">Controls</a></li>
-      <li><a href="#github">GitHub</a></li>
+      <li><a href="https://github.com/RatJuggler/clock-of-clocks">GitHub</a></li>
     </ul>
   </div>
   <div id="sketch-container">
     <div id="canvas-container"></div>
     <div id="controls-overlay" class="controls--hide">
-      <input id="debug-control" type="range" min="0" max="1"><label for="debug-control">Debug</label>
-      <input id="fps-control" type="range" min="1" max="60"><label for="fps-control">FPS</label>
+      <p><label for="debug-control">Debug</label><input id="debug-control" type="range" list="debug-range" min="0" max="1"></p>
+      <p><label for="fps-control">FPS</label><input id="fps-control" type="range" list="fps-range" min="0" max="60"></p>
     </div>
   </div>
-</body>
+  <datalist id="debug-range">
+    <option value="0" label="Off"></option>
+    <option value="1" label="On"></option>
+  </datalist>
+  <datalist id="fps-range">
+    <option value="0" label="0"></option>
+    <option value="10"></option>
+    <option value="20"></option>
+    <option value="30" label="30"></option>
+    <option value="40"></option>
+    <option value="50"></option>
+    <option value="60" label="60"></option>
+  </datalist></body>
+  <script>
+      function toggleControls() {
+          let tc = document.getElementById("controls-overlay");
+          tc.className = (tc.className === "controls--hide") ? "controls--show" : "controls--hide";
+      }
+      let dc = document.getElementById("debug-control");
+      dc.value = DEBUG ? "1" : "0";
+      let fc = document.getElementById("fps-control");
+      fc.value = TARGET_FPS;
+  </script>
 </html>
