@@ -1,4 +1,4 @@
-const DIRECTIONS = ["forward", "backward"];
+const DIRECTIONS = ["clockwise", "counterClockwise"];
 
 class Clock {
 
@@ -12,8 +12,8 @@ class Clock {
         this.mm = 0;
         this.toHH = 15;
         this.toMM = 45;
-        this.hhDirection = "forward";
-        this.mmDirection = "forward";
+        this.hhDirection = "clockwise";
+        this.mmDirection = "clockwise";
     }
 
     _drawHand(hand) {
@@ -36,20 +36,20 @@ class Clock {
         this._drawHand(this.hh);
     }
 
-    forward(current, target) {
-        if (this[current] !== target) {
-            this[current] = this[current] === 59 ? 0 : this[current] + 1;
-            return true;
+    clockwise(current, target) {
+        if (this[current] === target) {
+            return false;
         }
-        return false;
+        this[current] = this[current] === 59 ? 0 : this[current] + 1;
+        return true;
     }
 
-    backward(current, target) {
-        if (this[current] !== target) {
-            this[current] = this[current] === 0 ? 59 : this[current] - 1;
-            return true;
+    counterClockwise(current, target) {
+        if (this[current] === target) {
+            return false;
         }
-        return false;
+        this[current] = this[current] === 0 ? 59 : this[current] - 1;
+        return true;
     }
 
     update() {
@@ -58,7 +58,7 @@ class Clock {
         return hhUpdated && mmUpdated;
     }
 
-    setHands(toHH, toMM, hhDirection = "forward", mmDirection = "forward") {
+    setHands(toHH, toMM, hhDirection = "clockwise", mmDirection = "clockwise") {
         this.toHH = toHH;
         this.toMM = toMM;
         this.hhDirection = hhDirection;

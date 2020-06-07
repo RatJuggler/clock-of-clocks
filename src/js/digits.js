@@ -2,8 +2,8 @@ const DIGITS = {
     ":": {
         "width": 2,
         "height": 6,
-        "hhDirection": "forward",
-        "mmDirection": "forward",
+        "hhDirection": "clockwise",
+        "mmDirection": "clockwise",
         "shape": [
             {"hh": 15, "mm": 15}, {"hh": 45, "mm": 45},
             {"hh": 15, "mm": 30}, {"hh": 30, "mm": 45},
@@ -16,8 +16,8 @@ const DIGITS = {
     "0": {
         "width": 4,
         "height": 6,
-        "hhDirection": "forward",
-        "mmDirection": "forward",
+        "hhDirection": "clockwise",
+        "mmDirection": "clockwise",
         "shape": [
             {"hh": 15, "mm": 30}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 30, "mm": 45},
             {"hh": 0,  "mm": 30}, {"hh": 15, "mm": 30}, {"hh": 30, "mm": 45}, {"hh": 0,  "mm": 30},
@@ -30,8 +30,8 @@ const DIGITS = {
     "1": {
         "width": 4,
         "height": 6,
-        "hhDirection": "forward",
-        "mmDirection": "forward",
+        "hhDirection": "clockwise",
+        "mmDirection": "clockwise",
         "shape": [
             {"hh": 0,  "mm": 0}, {"hh": 15, "mm": 30}, {"hh": 15, "mm": 45}, {"hh": 30, "mm": 45},
             {"hh": 0,  "mm": 0}, {"hh": 0,  "mm": 15}, {"hh": 30, "mm": 45}, {"hh": 0,  "mm": 30},
@@ -44,8 +44,8 @@ const DIGITS = {
     "2": {
         "width": 4,
         "height": 6,
-        "hhDirection": "forward",
-        "mmDirection": "forward",
+        "hhDirection": "clockwise",
+        "mmDirection": "clockwise",
         "shape": [
             {"hh": 15, "mm": 30}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 30, "mm": 45},
             {"hh": 0,  "mm": 15}, {"hh": 15, "mm": 45}, {"hh": 30, "mm": 45}, {"hh": 0,  "mm": 30},
@@ -58,8 +58,8 @@ const DIGITS = {
     "3": {
         "width": 4,
         "height": 6,
-        "hhDirection": "forward",
-        "mmDirection": "forward",
+        "hhDirection": "clockwise",
+        "mmDirection": "clockwise",
         "shape": [
             {"hh": 15, "mm": 30}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 30, "mm": 45},
             {"hh": 0,  "mm": 15}, {"hh": 15, "mm": 45}, {"hh": 30, "mm": 45}, {"hh": 0,  "mm": 30},
@@ -72,8 +72,8 @@ const DIGITS = {
     "4": {
         "width": 4,
         "height": 6,
-        "hhDirection": "forward",
-        "mmDirection": "forward",
+        "hhDirection": "clockwise",
+        "mmDirection": "clockwise",
         "shape": [
             {"hh": 15, "mm": 30}, {"hh": 30, "mm": 45}, {"hh": 15, "mm": 30}, {"hh": 30, "mm": 45},
             {"hh": 0,  "mm": 30}, {"hh": 0,  "mm": 30}, {"hh": 0,  "mm": 30}, {"hh": 0,  "mm": 30},
@@ -86,8 +86,8 @@ const DIGITS = {
     "5": {
         "width": 4,
         "height": 6,
-        "hhDirection": "forward",
-        "mmDirection": "forward",
+        "hhDirection": "clockwise",
+        "mmDirection": "clockwise",
         "shape": [
             {"hh": 15, "mm": 30}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 30, "mm": 45},
             {"hh": 0,  "mm": 30}, {"hh": 15, "mm": 30}, {"hh": 15, "mm": 45}, {"hh": 0,  "mm": 45},
@@ -100,8 +100,8 @@ const DIGITS = {
     "6": {
         "width": 4,
         "height": 6,
-        "hhDirection": "forward",
-        "mmDirection": "forward",
+        "hhDirection": "clockwise",
+        "mmDirection": "clockwise",
         "shape": [
             {"hh": 15, "mm": 30}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 30, "mm": 45},
             {"hh": 0,  "mm": 30}, {"hh": 15, "mm": 30}, {"hh": 15, "mm": 45}, {"hh": 0,  "mm": 45},
@@ -114,8 +114,8 @@ const DIGITS = {
     "7": {
         "width": 4,
         "height": 6,
-        "hhDirection": "forward",
-        "mmDirection": "forward",
+        "hhDirection": "clockwise",
+        "mmDirection": "clockwise",
         "shape": [
             {"hh": 15, "mm": 30}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 30, "mm": 45},
             {"hh": 0,  "mm": 15}, {"hh": 15, "mm": 45}, {"hh": 30, "mm": 45}, {"hh": 0,  "mm": 30},
@@ -128,8 +128,8 @@ const DIGITS = {
     "8": {
         "width": 4,
         "height": 6,
-        "hhDirection": "forward",
-        "mmDirection": "forward",
+        "hhDirection": "clockwise",
+        "mmDirection": "clockwise",
         "shape": [
             {"hh": 15, "mm": 30}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 30, "mm": 45},
             {"hh": 0,  "mm": 30}, {"hh": 15, "mm": 30}, {"hh": 30, "mm": 45}, {"hh": 0,  "mm": 30},
@@ -142,8 +142,8 @@ const DIGITS = {
     "9": {
         "width": 4,
         "height": 6,
-        "hhDirection": "forward",
-        "mmDirection": "forward",
+        "hhDirection": "clockwise",
+        "mmDirection": "clockwise",
         "shape": [
             {"hh": 15, "mm": 30}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 30, "mm": 45},
             {"hh": 0,  "mm": 30}, {"hh": 15, "mm": 30}, {"hh": 30, "mm": 45}, {"hh": 0,  "mm": 30},

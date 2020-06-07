@@ -38,8 +38,8 @@ const PATTERNS = {
     "A": {
         "width": 2,
         "height": 2,
-        "hhDirection": "forward",
-        "mmDirection": "backward",
+        "hhDirection": "clockwise",
+        "mmDirection": "counterClockwise",
         "shape": [
             {"hh": 15, "mm": 30}, {"hh": 30, "mm": 45},
             {"hh": 0,  "mm": 15}, {"hh": 0,  "mm": 45}
@@ -48,8 +48,8 @@ const PATTERNS = {
     "B": {
         "width": 2,
         "height": 2,
-        "hhDirection": "forward",
-        "mmDirection": "backward",
+        "hhDirection": "clockwise",
+        "mmDirection": "counterClockwise",
         "shape": [
             {"hh": 20, "mm": 25}, {"hh": 35, "mm": 40},
             {"hh": 5,  "mm": 10}, {"hh": 50, "mm": 55}
@@ -58,8 +58,8 @@ const PATTERNS = {
     "C": {
         "width": 1,
         "height": 2,
-        "hhDirection": "forward",
-        "mmDirection": "backward",
+        "hhDirection": "clockwise",
+        "mmDirection": "counterClockwise",
         "shape": [
             {"hh": 15, "mm": 45},
             {"hh": 0,  "mm": 30}
@@ -68,8 +68,8 @@ const PATTERNS = {
     "D": {
         "width": 1,
         "height": 2,
-        "hhDirection": "backward",
-        "mmDirection": "forward",
+        "hhDirection": "counterClockwise",
+        "mmDirection": "clockwise",
         "shape": [
             {"hh": 0,  "mm": 30},
             {"hh": 15, "mm": 45}
@@ -78,8 +78,8 @@ const PATTERNS = {
     "E": {
         "width": 3,
         "height": 4,
-        "hhDirection": "forward",
-        "mmDirection": "backward",
+        "hhDirection": "clockwise",
+        "mmDirection": "counterClockwise",
         "shape": [
             {"hh": 15, "mm": 30}, {"hh": 15, "mm": 45}, {"hh": 30, "mm": 45},
             {"hh": 0,  "mm": 30}, {"hh": 7,  "mm": 37}, {"hh": 0,  "mm": 30},
@@ -90,8 +90,8 @@ const PATTERNS = {
     "F": {
         "width": 6,
         "height": 4,
-        "hhDirection": "forward",
-        "mmDirection": "backward",
+        "hhDirection": "clockwise",
+        "mmDirection": "counterClockwise",
         "shape": [
             {"hh": 15, "mm": 30}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 15, "mm": 45}, {"hh": 30, "mm": 45},
             {"hh": 0,  "mm": 30}, {"hh": 7,  "mm": 37}, {"hh": 53, "mm": 23}, {"hh": 7,  "mm": 37}, {"hh": 53, "mm": 23}, {"hh": 0,  "mm": 30},
