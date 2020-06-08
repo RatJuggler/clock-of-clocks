@@ -59,7 +59,7 @@
       const fpsControl = document.getElementById("fps-control");
       const fpsValue = document.getElementById("fps-value");
       fpsControl.addEventListener("input", function() {
-          TARGET_FPS = parseInt(fpsControl.value);
+          TARGET_FPS = fpsControl.value;
           fpsValue.innerText = TARGET_FPS.toString();
       });
       debugControl.value = DEBUG ? "1" : "0";
