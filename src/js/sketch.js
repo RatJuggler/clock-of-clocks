@@ -43,7 +43,7 @@ function draw() {
     if (DEBUG) {
         textSize(32);
         fill("#00ff00");
-        text(`FPS: ${round(getFrameRate(), 2)}
+        text(`FPS: ${round(getFrameRate(), 0)}
 Time: ${str(hour()).padStart(2, "0") }:${str(minute()).padStart(2, "0") }:${str(second()).padStart(2, "0") }
 Clocks: ${HORIZONTAL_CLOCKS} x ${VERTICAL_CLOCKS}
 Canvas: ${clockOfClocks.width} x ${clockOfClocks.height}
