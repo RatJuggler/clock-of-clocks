@@ -20,8 +20,7 @@ function setup() {
     clockOfClocks = new ClockOfClocks(windowWidth, windowHeight);
     createCanvas(clockOfClocks.width, clockOfClocks.height).parent("canvas-container");
     faceCanvas = createGraphics(clockOfClocks.width, clockOfClocks.height);
-    clockOfClocks.renderFaces(faceCanvas);
-    clockOfClocks.setTime();
+    clockOfClocks.reset(faceCanvas);
     repeatEvery(() => clockOfClocks.setTime(), SHOW_TIME_INTERVAL);
 }
 
@@ -29,16 +28,15 @@ function windowResized() {
     clockOfClocks = new ClockOfClocks(windowWidth, windowHeight);
     resizeCanvas(clockOfClocks.width, clockOfClocks.height);
     faceCanvas.resizeCanvas(clockOfClocks.width, clockOfClocks.height);
-    faceCanvas.clear();
-    clockOfClocks.renderFaces(faceCanvas);
-    clockOfClocks.setTime();
+    clockOfClocks.reset(faceCanvas);
 }
 
 function draw() {
     frameRate(TARGET_FPS);
-    image(faceCanvas, 0,0);
-    // Update and show clocks.
-    clockOfClocks.process();
+    // Show the clock faces.
+    image(faceCanvas, 0, 0);
+    // Then update and show the clock hands.
+    clockOfClocks.tick();
     // Show FPS and detail on clock/screen sizes.
     if (DEBUG) {
         textSize(32);

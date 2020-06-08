@@ -90,13 +90,7 @@ class ClockOfClocks {
         }
     }
 
-    renderFaces(renderTo) {
-        this.clocks.forEach(clock => {
-            clock.renderFace(renderTo);
-        })
-    }
-
-    process() {
+    tick() {
         if (this._freeToSetNewTarget()) {
             this._setTarget();
         }
@@ -109,6 +103,15 @@ class ClockOfClocks {
             this.targetSetDelay = 30;
             this.targetSet = false;
         }
+    }
+
+    reset(renderTo) {
+        // Redraw the faces and set time.
+        renderTo.background("#cccccc");
+        this.clocks.forEach(clock => {
+            clock.renderFace(renderTo);
+        })
+        this.setTime();
     }
 
 }
