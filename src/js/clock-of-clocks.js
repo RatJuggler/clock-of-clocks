@@ -102,7 +102,7 @@ class ClockOfClocks {
         // Move and show the hands.
         let anyUpdates = false;
         this.clocks.forEach(clock => {
-            anyUpdates = clock.update() || anyUpdates;
+            anyUpdates = clock.tick() || anyUpdates;
             clock.renderHands();
         })
         // If pattern/time is complete a new one can be set.

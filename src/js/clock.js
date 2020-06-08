@@ -55,7 +55,7 @@ class Clock {
         return true;
     }
 
-    update() {
+    tick() {
         let hhUpdated = this[this.hhDirection]("hh", this.toHH);
         let mmUpdated = this[this.mmDirection]("mm", this.toMM);
         return hhUpdated && mmUpdated;
