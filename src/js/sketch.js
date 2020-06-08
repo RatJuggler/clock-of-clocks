@@ -4,7 +4,7 @@ const SHOW_TIME_INTERVAL = 15 * ONE_SECOND;
 let DEBUG = false;
 let TARGET_FPS = 20;
 
-let clockOfClocks;
+let clockOfClocks, faceCanvas;
 
 function repeatEvery(handler, interval) {
     let now = new Date();
@@ -16,22 +16,26 @@ function repeatEvery(handler, interval) {
 }
 
 function setup() {
+    angleMode(DEGREES);
     clockOfClocks = new ClockOfClocks(windowWidth, windowHeight);
     createCanvas(clockOfClocks.width, clockOfClocks.height).parent("canvas-container");
-    angleMode(DEGREES);
-    repeatEvery(() => clockOfClocks.setTime(), SHOW_TIME_INTERVAL);
+    faceCanvas = createGraphics(clockOfClocks.width, clockOfClocks.height);
+    clockOfClocks.renderFaces(faceCanvas);
     clockOfClocks.setTime();
+    repeatEvery(() => clockOfClocks.setTime(), SHOW_TIME_INTERVAL);
 }
 
 function windowResized() {
     clockOfClocks = new ClockOfClocks(windowWidth, windowHeight);
     resizeCanvas(clockOfClocks.width, clockOfClocks.height);
+    faceCanvas = createGraphics(clockOfClocks.width, clockOfClocks.height);
+    clockOfClocks.renderFaces(faceCanvas);
     clockOfClocks.setTime();
 }
 
 function draw() {
     frameRate(TARGET_FPS);
-    background("#cccccc");
+    image(faceCanvas, 0,0);
     // Update and show clocks.
     clockOfClocks.process();
     // Show FPS and detail on clock/screen sizes.

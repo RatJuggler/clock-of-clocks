@@ -90,6 +90,12 @@ class ClockOfClocks {
         }
     }
 
+    renderFaces(renderTo) {
+        this.clocks.forEach(clock => {
+            clock.renderFace(renderTo);
+        })
+    }
+
     process() {
         if (this._freeToSetNewTarget()) {
             this._setTarget();
@@ -97,7 +103,7 @@ class ClockOfClocks {
         let anyUpdates = false;
         this.clocks.forEach(clock => {
             anyUpdates = clock.update() || anyUpdates;
-            clock.render();
+            clock.renderHands();
         })
         if (this.targetSet && !anyUpdates) {
             this.targetSetDelay = 30;

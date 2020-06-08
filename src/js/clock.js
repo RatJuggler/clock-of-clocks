@@ -16,6 +16,15 @@ class Clock {
         this.mmDirection = "clockwise";
     }
 
+    renderFace(renderTo) {
+        renderTo.stroke("#444444");
+        renderTo.noFill();
+        renderTo.ellipse(this.x, this.y, this.d);
+        renderTo.stroke("#000000");
+        renderTo.fill("#eeeeee");
+        renderTo.ellipse(this.x, this.y, this.d - 4);
+    }
+
     _drawHand(hand) {
         push();
         translate(this.x, this.y);
@@ -25,13 +34,7 @@ class Clock {
         pop();
     }
 
-    render() {
-        stroke("#444444");
-        noFill();
-        ellipse(this.x, this.y, this.d);
-        stroke("#000000");
-        fill("#eeeeee");
-        ellipse(this.x, this.y, this.d - 4);
+    renderHands() {
         this._drawHand(this.mm);
         this._drawHand(this.hh);
     }
