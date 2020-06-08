@@ -28,7 +28,8 @@ function setup() {
 function windowResized() {
     clockOfClocks = new ClockOfClocks(windowWidth, windowHeight);
     resizeCanvas(clockOfClocks.width, clockOfClocks.height);
-    faceCanvas = createGraphics(clockOfClocks.width, clockOfClocks.height);
+    faceCanvas.resizeCanvas(clockOfClocks.width, clockOfClocks.height);
+    faceCanvas.clear();
     clockOfClocks.renderFaces(faceCanvas);
     clockOfClocks.setTime();
 }
