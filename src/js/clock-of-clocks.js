@@ -16,7 +16,9 @@ class ClockOfClocks {
                 this.clocks.push(new Clock( offset + (clockSize * xClocks), offset + (clockSize * yClocks), clockSize));
             }
         }
-        // This should be atomic.
+        // Create an off-screen canvas which is used to pre-render the clock faces.
+        this.faceCanvas = createGraphics(this.width, this.height);
+        // The target will be a new pattern or the time to display (the flag should be atomic).
         this.targetSet = false;
         this.targetSetDelay = 0;
     }
@@ -91,25 +93,31 @@ class ClockOfClocks {
     }
 
     tick() {
+        // Show the clock faces.
+        image(this.faceCanvas, 0, 0);
+        // Show a new pattern.
         if (this._freeToSetNewTarget()) {
             this._setTarget();
         }
+        // Move and show the hands.
         let anyUpdates = false;
         this.clocks.forEach(clock => {
             anyUpdates = clock.update() || anyUpdates;
             clock.renderHands();
         })
+        // If pattern/time is complete a new one can be set.
         if (this.targetSet && !anyUpdates) {
             this.targetSetDelay = 30;
             this.targetSet = false;
         }
     }
 
-    reset(renderTo) {
-        // Redraw the faces and set time.
-        renderTo.background("#cccccc");
+    reset() {
+        // Redraw the faces and immediately target a new time display.
+        this.faceCanvas.resizeCanvas(this.width, this.height);
+        this.faceCanvas.background("#cccccc");
         this.clocks.forEach(clock => {
-            clock.renderFace(renderTo);
+            clock.renderFace(this.faceCanvas);
         })
         this.setTime();
     }
