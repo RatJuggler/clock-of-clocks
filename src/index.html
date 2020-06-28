@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Clock of Clocks">
   <title>Clock of Clocks</title>
-  <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <script src="js/digits.js"></script>
-  <script src="js/patterns.js"></script>
-  <script src="js/clock.js"></script>
-  <script src="js/clock-of-clocks.js"></script>
-  <script src="js/sketch.js"></script>
+  <meta name="description" content="Display the time using a clock made up of clocks.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="og:url" content="https://ratjuggler.github.io/clock-of-clocks/src/index.html">
+  <meta name="og:title" content="Clock of Clocks">
+  <meta name="og:type" content="website">
+  <meta name="og:description" content="Display the time using a clock made up of clocks.">
+  <meta name="og:image" content="https://github.com/RatJuggler/clock-of-clocks/blob/master/clock-of-clocks.png?raw=true">
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
+
   <div id="top-menu">
     <ul>
       <li><a class="brand" href="#">Clock-of-Clocks</a></li>
@@ -21,6 +26,7 @@
       <li><a href="https://github.com/RatJuggler/clock-of-clocks">GitHub</a></li>
     </ul>
   </div>
+
   <div id="sketch-container">
     <div id="canvas-container"></div>
     <fieldset id="controls-overlay" class="controls--hide">
@@ -33,10 +39,12 @@
       <span id="fps-value"></span>
     </fieldset>
   </div>
+
   <datalist id="debug-range">
     <option value="0" label="Off"></option>
     <option value="1" label="On"></option>
   </datalist>
+
   <datalist id="fps-range">
     <option value="10" label="10"></option>
     <option value="20"></option>
@@ -44,7 +52,15 @@
     <option value="40"></option>
     <option value="50"></option>
     <option value="60" label="60"></option>
-  </datalist></body>
+  </datalist>
+
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+  <script src="js/digits.js"></script>
+  <script src="js/patterns.js"></script>
+  <script src="js/clock.js"></script>
+  <script src="js/clock-of-clocks.js"></script>
+  <script src="js/sketch.js"></script>
+
   <script>
       function toggleControls() {
           let co = document.getElementById("controls-overlay");
@@ -67,4 +83,7 @@
       debugControl.dispatchEvent(new Event("input"));
       fpsControl.dispatchEvent(new Event("input"));
   </script>
+
+</body>
+
 </html>
