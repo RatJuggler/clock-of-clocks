@@ -10,11 +10,11 @@ class ClockOfClocks {
         this.clockSize = min(int(this.width / ClockOfClocks.HORIZONTAL_CLOCKS), int(this.height / ClockOfClocks.VERTICAL_CLOCKS));
         // Initialise the clocks.
         this.clocks = [];
-        let offset = int(this.clockSize / 2);
-        let hOffset = offset + int((this.width - (this.clockSize * ClockOfClocks.HORIZONTAL_CLOCKS)) / 2);
+        let hOffset = int(this.clockSize / 2) + int((this.width - (this.clockSize * ClockOfClocks.HORIZONTAL_CLOCKS)) / 2);
+        let vOffset = int((this.height - (this.clockSize * ClockOfClocks.VERTICAL_CLOCKS)) / 2) + 3;
         for (let yClocks = 0; yClocks < ClockOfClocks.VERTICAL_CLOCKS; yClocks++) {
             for (let xClocks = 0; xClocks < ClockOfClocks.HORIZONTAL_CLOCKS; xClocks++) {
-                this.clocks.push(new Clock( hOffset + (this.clockSize * xClocks), offset + (this.clockSize * yClocks), this.clockSize));
+                this.clocks.push(new Clock( hOffset + (this.clockSize * xClocks), vOffset + (this.clockSize * yClocks), this.clockSize));
             }
         }
         // Create an off-screen canvas which is used to pre-render the clock faces.
