@@ -1,11 +1,14 @@
-const ONE_SECOND = 1000;
-const SHOW_TIME_INTERVAL = 15 * ONE_SECOND;
+// Show the time every n seconds.
+const SHOW_TIME_INTERVAL = 15;
 
+// Configuration options.
 let DEBUG = false;
 let TARGET_FPS = 20;
 
+// Global to keep track of and draw clocks.
 let clockOfClocks;
 
+// Repeat timer.
 function repeatEvery(handler, interval) {
     let now = new Date();
     let delay = interval - now % interval;
@@ -15,21 +18,24 @@ function repeatEvery(handler, interval) {
     }, delay);
 }
 
+// Global function required for p5.js.
 function setup() {
     angleMode(DEGREES);
     clockOfClocks = new ClockOfClocks(windowWidth, windowHeight);
     createCanvas(clockOfClocks.width, clockOfClocks.height).parent("canvas-container");
     clockOfClocks.reset();
     // Clocks will show patterns with the actual time being shown at intervals.
-    repeatEvery(() => clockOfClocks.setTime(), SHOW_TIME_INTERVAL);
+    repeatEvery(() => clockOfClocks.setTime(), SHOW_TIME_INTERVAL * 1000);
 }
 
+// Global function triggered by p5.js.
 function windowResized() {
     clockOfClocks = new ClockOfClocks(windowWidth, windowHeight);
     resizeCanvas(clockOfClocks.width, clockOfClocks.height);
     clockOfClocks.reset();
 }
 
+// Global function required for p5.js.
 function draw() {
     frameRate(TARGET_FPS);
     // Update and show the clock.
