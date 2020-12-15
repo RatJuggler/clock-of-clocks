@@ -1,9 +1,9 @@
-const DIRECTIONS = ["clockwise", "counterClockwise"];
-
 class Clock {
 
+    static DIRECTIONS = ["clockwise", "counterClockwise"];
+
     constructor(x, y, d) {
-        this.x = x;         // Clock center postion x,y
+        this.x = x;         // Clock center position x,y
         this.y = y;
         this.d = d;         // Clock diameter
         this.w = d * 0.05;  // Hands thickness
@@ -12,8 +12,8 @@ class Clock {
         this.mm = 0;
         this.toHH = 15;
         this.toMM = 45;
-        this.hhDirection = "clockwise";
-        this.mmDirection = "clockwise";
+        this.hhDirection = Clock.DIRECTIONS[0];
+        this.mmDirection = Clock.DIRECTIONS[0];
     }
 
     renderFace(renderTo) {
@@ -69,7 +69,7 @@ class Clock {
     }
 
     setRandomHands() {
-        this.setHands(int(random(0, 60)), int(random(0, 60)), random(DIRECTIONS), random(DIRECTIONS));
+        this.setHands(int(random(0, 60)), int(random(0, 60)), random(Clock.DIRECTIONS), random(Clock.DIRECTIONS));
     }
 
     setSwapHands() {
