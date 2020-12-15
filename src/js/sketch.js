@@ -41,7 +41,6 @@ function draw() {
         text(`FPS: ${round(getFrameRate(), 0)}
 Time: ${str(hour()).padStart(2, "0") }:${str(minute()).padStart(2, "0") }:${str(second()).padStart(2, "0") }
 Clocks: ${ClockOfClocks.HORIZONTAL_CLOCKS} x ${ClockOfClocks.VERTICAL_CLOCKS}, Size=${clockOfClocks.clockSize}
-Canvas: ${clockOfClocks.width} x ${clockOfClocks.height}
-Window: ${windowWidth} x ${windowHeight}`, 8, clockOfClocks.height - 224);
+Canvas: ${clockOfClocks.width} x ${clockOfClocks.height}`, 8, clockOfClocks.height - 192);
     }
 }
