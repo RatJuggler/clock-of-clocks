@@ -5,15 +5,15 @@ class ClockOfClocks {
 
     constructor(windowWidth, windowHeight) {
         // Work out how big each clock and the canvas will be given the current window size.
-        let clockSize = min(int(windowWidth / HORIZONTAL_CLOCKS), int(windowHeight / VERTICAL_CLOCKS));
-        this.width = clockSize * HORIZONTAL_CLOCKS + 1;
-        this.height = clockSize * VERTICAL_CLOCKS + 1;
+        this.clockSize = min(int(windowWidth / HORIZONTAL_CLOCKS), int(windowHeight / VERTICAL_CLOCKS));
+        this.width = this.clockSize * HORIZONTAL_CLOCKS + 1;
+        this.height = this.clockSize * VERTICAL_CLOCKS + 1;
         // Initialise the clocks.
         this.clocks = [];
-        let offset = int(clockSize / 2) + 1;
+        let offset = int(this.clockSize / 2) + 1;
         for (let yClocks = 0; yClocks < VERTICAL_CLOCKS; yClocks++) {
             for (let xClocks = 0; xClocks < HORIZONTAL_CLOCKS; xClocks++) {
-                this.clocks.push(new Clock( offset + (clockSize * xClocks), offset + (clockSize * yClocks), clockSize));
+                this.clocks.push(new Clock( offset + (this.clockSize * xClocks), offset + (this.clockSize * yClocks), this.clockSize));
             }
         }
         // Create an off-screen canvas which is used to pre-render the clock faces.
