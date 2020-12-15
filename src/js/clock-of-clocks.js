@@ -1,18 +1,18 @@
-const HORIZONTAL_CLOCKS = 18;
-const VERTICAL_CLOCKS = 8;
-
 class ClockOfClocks {
+
+    static HORIZONTAL_CLOCKS = 18;
+    static VERTICAL_CLOCKS = 8;
 
     constructor(windowWidth, windowHeight) {
         // Work out how big each clock and the canvas will be given the current window size.
-        this.clockSize = min(int(windowWidth / HORIZONTAL_CLOCKS), int(windowHeight / VERTICAL_CLOCKS));
-        this.width = this.clockSize * HORIZONTAL_CLOCKS + 1;
-        this.height = this.clockSize * VERTICAL_CLOCKS + 1;
+        this.clockSize = min(int(windowWidth / ClockOfClocks.HORIZONTAL_CLOCKS), int(windowHeight / ClockOfClocks.VERTICAL_CLOCKS));
+        this.width = this.clockSize * ClockOfClocks.HORIZONTAL_CLOCKS + 1;
+        this.height = this.clockSize * ClockOfClocks.VERTICAL_CLOCKS + 1;
         // Initialise the clocks.
         this.clocks = [];
         let offset = int(this.clockSize / 2) + 1;
-        for (let yClocks = 0; yClocks < VERTICAL_CLOCKS; yClocks++) {
-            for (let xClocks = 0; xClocks < HORIZONTAL_CLOCKS; xClocks++) {
+        for (let yClocks = 0; yClocks < ClockOfClocks.VERTICAL_CLOCKS; yClocks++) {
+            for (let xClocks = 0; xClocks < ClockOfClocks.HORIZONTAL_CLOCKS; xClocks++) {
                 this.clocks.push(new Clock( offset + (this.clockSize * xClocks), offset + (this.clockSize * yClocks), this.clockSize));
             }
         }
@@ -44,7 +44,7 @@ class ClockOfClocks {
                 this.clocks[clockIdx + width].setHands(from.shape[digitIdx].hh, from.shape[digitIdx].mm, from.hhDirection, from.mmDirection);
                 digitIdx++;
             }
-            clockIdx += HORIZONTAL_CLOCKS;
+            clockIdx += ClockOfClocks.HORIZONTAL_CLOCKS;
         }
         return offset + from.width;
     }
@@ -54,13 +54,13 @@ class ClockOfClocks {
         this.targetSet = true;
         // Time display to show.
         let time = hour().toString().padStart(2, "0") + ":" + minute().toString().padStart(2, "0");
-        let offset = HORIZONTAL_CLOCKS;
+        let offset = ClockOfClocks.HORIZONTAL_CLOCKS;
         for (let c of time) {
             offset = this._copy(DIGITS[c], offset);
         }
         // Do something with the top and bottom rows.
-        offset = (VERTICAL_CLOCKS - 1) * HORIZONTAL_CLOCKS;
-        for (let width = 0; width < HORIZONTAL_CLOCKS; width++) {
+        offset = (ClockOfClocks.VERTICAL_CLOCKS - 1) * ClockOfClocks.HORIZONTAL_CLOCKS;
+        for (let width = 0; width < ClockOfClocks.HORIZONTAL_CLOCKS; width++) {
             this.clocks[width].setHands(0, 0);
             this.clocks[offset + width].setHands(0, 0);
         }
@@ -69,7 +69,7 @@ class ClockOfClocks {
     _setPattern() {
         let pattern = random(PATTERNS.templates);
         for (let row = 0; row < pattern.layout.length; row++) {
-            let offset = row * HORIZONTAL_CLOCKS * pattern.height;
+            let offset = row * ClockOfClocks.HORIZONTAL_CLOCKS * pattern.height;
             for (let c of pattern.layout[row]) {
                 offset = this._copy(PATTERNS[c], offset);
             }
