@@ -39,4 +39,15 @@ class Configuration {
     showBackgroundColour() {
         return this.backgroundColour;
     }
+
+    setFaceColour(faceColour) {
+        if (/^#[0-9A-Fa-f]{6}$/i.test(faceColour.toString())) {
+            this.faceColour = faceColour.toString();
+            window.dispatchEvent(new Event('resize'));
+        }
+    }
+
+    showFaceColour() {
+        return this.faceColour;
+    }
 }

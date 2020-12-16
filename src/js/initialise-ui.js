@@ -25,10 +25,19 @@ bgColour.addEventListener("input", function() {
     bgcDisplay.innerText = configuration.showBackgroundColour();
 });
 
+const faceColour = document.getElementById("face-colour");
+const faceDisplay = document.getElementById("face-colour-display");
+faceColour.addEventListener("input", function() {
+    configuration.setFaceColour(faceColour.value);
+    faceDisplay.innerText = configuration.showFaceColour();
+});
+
 debugControl.value = configuration.getDebug();
 fpsControl.value = configuration.targetFPS;
 bgColour.value = configuration.backgroundColour;
+faceColour.value = configuration.faceColour;
 
 debugControl.dispatchEvent(new Event("input"));
 fpsControl.dispatchEvent(new Event("input"));
 bgColour.dispatchEvent(new Event("input"));
+faceColour.dispatchEvent(new Event("input"));
