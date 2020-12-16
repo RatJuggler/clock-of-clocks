@@ -39,14 +39,23 @@ rimColour.addEventListener("input", function() {
     rimDisplay.innerText = configuration.showRimColour();
 });
 
+const handsColour = document.getElementById("hands-colour");
+const handsDisplay = document.getElementById("hands-colour-display");
+handsColour.addEventListener("input", function() {
+    configuration.setHandsColour(handsColour.value);
+    handsDisplay.innerText = configuration.showHandsColour();
+});
+
 debugControl.value = configuration.getDebug();
 fpsControl.value = configuration.targetFPS;
 bgColour.value = configuration.backgroundColour;
 faceColour.value = configuration.faceColour;
 rimColour.value = configuration.rimColour;
+handsColour.value = configuration.handsColour;
 
 debugControl.dispatchEvent(new Event("input"));
 fpsControl.dispatchEvent(new Event("input"));
 bgColour.dispatchEvent(new Event("input"));
 faceColour.dispatchEvent(new Event("input"));
 rimColour.dispatchEvent(new Event("input"));
+handsColour.dispatchEvent(new Event("input"));

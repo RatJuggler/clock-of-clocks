@@ -61,4 +61,14 @@ class Configuration {
     showRimColour() {
         return this.rimColour;
     }
+
+    setHandsColour(handsColour) {
+        if (/^#[0-9A-Fa-f]{6}$/i.test(handsColour.toString())) {
+            this.handsColour = handsColour.toString();
+        }
+    }
+
+    showHandsColour() {
+        return this.handsColour;
+    }
 }
