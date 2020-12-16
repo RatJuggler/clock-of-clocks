@@ -4,7 +4,7 @@ class ClockOfClocks {
     static VERTICAL_CLOCKS = 8;
 
     constructor(windowWidth, windowHeight) {
-        // Work out how big each clock and the canvas will be given the current window size.
+        // Work out how big each clock will be given the current window size.
         this.width = windowWidth;
         this.height = windowHeight;
         this.clockSize = min(int(this.width / ClockOfClocks.HORIZONTAL_CLOCKS), int(this.height / ClockOfClocks.VERTICAL_CLOCKS));
@@ -116,11 +116,10 @@ class ClockOfClocks {
     reset() {
         // Redraw the faces and immediately target a new time display.
         this.faceCanvas.resizeCanvas(this.width, this.height);
-        this.faceCanvas.background("#cccccc");
+        this.faceCanvas.background(BACKGROUND_COLOUR);
         this.clocks.forEach(clock => {
             clock.renderFace(this.faceCanvas);
         })
         this.setTime();
     }
-
 }

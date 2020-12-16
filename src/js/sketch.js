@@ -4,6 +4,7 @@ const SHOW_TIME_INTERVAL = 15;
 // Configuration options.
 let DEBUG = false;
 let TARGET_FPS = 20;
+let BACKGROUND_COLOUR = "#cccccc";
 
 // Global to keep track of and draw clocks.
 let clockOfClocks;

@@ -18,8 +18,20 @@ fpsControl.addEventListener("input", function() {
     fpsDisplay.innerText = TARGET_FPS.toString();
 });
 
+const bgColour = document.getElementById("background-colour");
+const bgcDisplay = document.getElementById("background-colour-display");
+bgColour.addEventListener("input", function() {
+    if (/^#[0-9A-Fa-f]{6}$/i.test(bgColour.value.toString())) {
+        BACKGROUND_COLOUR = bgColour.value.toString();
+        bgcDisplay.innerText = BACKGROUND_COLOUR;
+        windowResized();
+    }
+});
+
 debugControl.value = DEBUG ? "1" : "0";
 fpsControl.value = TARGET_FPS;
+bgColour.value = BACKGROUND_COLOUR;
 
 debugControl.dispatchEvent(new Event("input"));
 fpsControl.dispatchEvent(new Event("input"));
+bgColour.dispatchEvent(new Event("input"));
