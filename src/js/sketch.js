@@ -2,9 +2,7 @@
 const SHOW_TIME_INTERVAL = 15;
 
 // Configuration options.
-let DEBUG = false;
-let TARGET_FPS = 20;
-let BACKGROUND_COLOUR = "#cccccc";
+let configuration = new Configuration();
 
 // Global to keep track of and draw clocks.
 let clockOfClocks;
@@ -38,11 +36,11 @@ function windowResized() {
 
 // Global function required for p5.js.
 function draw() {
-    frameRate(TARGET_FPS);
+    frameRate(configuration.targetFPS);
     // Update and show the clock.
     clockOfClocks.tick();
     // Show FPS and detail on clock/screen sizes.
-    if (DEBUG) {
+    if (configuration.debug) {
         textSize(32);
         fill("#00ff00");
         text(`FPS: ${round(getFrameRate(), 0)}

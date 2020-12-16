@@ -116,7 +116,7 @@ class ClockOfClocks {
     reset() {
         // Redraw the faces and immediately target a new time display.
         this.faceCanvas.resizeCanvas(this.width, this.height);
-        this.faceCanvas.background(BACKGROUND_COLOUR);
+        this.faceCanvas.background(configuration.backgroundColour);
         this.clocks.forEach(clock => {
             clock.renderFace(this.faceCanvas);
         })
