@@ -32,11 +32,11 @@
     <fieldset id="controls-overlay" class="controls--hide">
       <label for="debug-control">Debug:</label>
       <input id="debug-control" type="range" list="debug-range" min="0" max="1">
-      <span id="debug-value"></span>
+      <span id="debug-display"></span>
       <br/>
       <label for="fps-control">Target FPS:</label>
       <input id="fps-control" type="range" list="fps-range" min="10" max="60" step="10">
-      <span id="fps-value"></span>
+      <span id="fps-display"></span>
     </fieldset>
   </div>
 
@@ -68,16 +68,16 @@
           co.className = (co.className === "controls--hide") ? "controls--show" : "controls--hide";
       });
       const debugControl = document.getElementById("debug-control");
-      const debugValue = document.getElementById("debug-value");
+      const debugDisplay = document.getElementById("debug-display");
       debugControl.addEventListener("input", function() {
           DEBUG = debugControl.value === "1";
-          debugValue.innerText = DEBUG ? "On" : "Off";
+          debugDisplay.innerText = DEBUG ? "On" : "Off";
       });
       const fpsControl = document.getElementById("fps-control");
-      const fpsValue = document.getElementById("fps-value");
+      const fpsDisplay = document.getElementById("fps-display");
       fpsControl.addEventListener("input", function() {
           TARGET_FPS = parseInt(fpsControl.value.toString());
-          fpsValue.innerText = TARGET_FPS.toString();
+          fpsDisplay.innerText = TARGET_FPS.toString();
       });
       debugControl.value = DEBUG ? "1" : "0";
       fpsControl.value = TARGET_FPS;
