@@ -7,28 +7,25 @@ controls.addEventListener("click", function() {
 const debugControl = document.getElementById("debug-control");
 const debugDisplay = document.getElementById("debug-display");
 debugControl.addEventListener("input", function() {
-    configuration.debug = debugControl.value === "1";
-    debugDisplay.innerText = configuration.debug ? "On" : "Off";
+    configuration.setDebug(debugControl.value);
+    debugDisplay.innerText = configuration.showDebug();
 });
 
 const fpsControl = document.getElementById("fps-control");
 const fpsDisplay = document.getElementById("fps-display");
 fpsControl.addEventListener("input", function() {
-    configuration.targetFPS = parseInt(fpsControl.value.toString());
-    fpsDisplay.innerText = configuration.targetFPS.toString();
+    configuration.setTargetFPS(fpsControl.value);
+    fpsDisplay.innerText = configuration.showTargetFPS();
 });
 
 const bgColour = document.getElementById("background-colour");
 const bgcDisplay = document.getElementById("background-colour-display");
 bgColour.addEventListener("input", function() {
-    if (/^#[0-9A-Fa-f]{6}$/i.test(bgColour.value.toString())) {
-        configuration.backgroundColour = bgColour.value.toString();
-        bgcDisplay.innerText = configuration.backgroundColour;
-        windowResized();
-    }
+    configuration.setBackgroundColour(bgColour.value);
+    bgcDisplay.innerText = configuration.showBackgroundColour();
 });
 
-debugControl.value = configuration.debug ? "1" : "0";
+debugControl.value = configuration.getDebug();
 fpsControl.value = configuration.targetFPS;
 bgColour.value = configuration.backgroundColour;
 
