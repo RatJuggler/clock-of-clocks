@@ -17,11 +17,10 @@ class Clock {
     }
 
     renderFace(renderTo) {
-        renderTo.stroke("#444444");
+        renderTo.stroke(configuration.rimColour);
         renderTo.noFill();
         renderTo.ellipse(this.x, this.y, this.d);
-        renderTo.stroke("#000000");
-        renderTo.fill("#eeeeee");
+        renderTo.fill(configuration.faceColour);
         renderTo.ellipse(this.x, this.y, this.d - 4);
     }
 
@@ -29,6 +28,7 @@ class Clock {
         push();
         translate(this.x, this.y);
         rotate((hand * 6) - 90);
+        stroke(configuration.handsColour);
         strokeWeight(this.w);
         line(0, 0,this.l, 0);
         pop();

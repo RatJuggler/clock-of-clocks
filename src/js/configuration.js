@@ -4,6 +4,9 @@ class Configuration {
         this.debug = false;
         this.targetFPS = 20;
         this.backgroundColour = "#cccccc";
+        this.faceColour = "#eeeeee";
+        this.rimColour = "#444444";
+        this.handsColour = "#000000";
     }
 
     setDebug(debug) {
