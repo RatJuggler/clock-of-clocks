@@ -32,12 +32,21 @@ faceColour.addEventListener("input", function() {
     faceDisplay.innerText = configuration.showFaceColour();
 });
 
+const rimColour = document.getElementById("rim-colour");
+const rimDisplay = document.getElementById("rim-colour-display");
+rimColour.addEventListener("input", function() {
+    configuration.setRimColour(rimColour.value);
+    rimDisplay.innerText = configuration.showRimColour();
+});
+
 debugControl.value = configuration.getDebug();
 fpsControl.value = configuration.targetFPS;
 bgColour.value = configuration.backgroundColour;
 faceColour.value = configuration.faceColour;
+rimColour.value = configuration.rimColour;
 
 debugControl.dispatchEvent(new Event("input"));
 fpsControl.dispatchEvent(new Event("input"));
 bgColour.dispatchEvent(new Event("input"));
 faceColour.dispatchEvent(new Event("input"));
+rimColour.dispatchEvent(new Event("input"));

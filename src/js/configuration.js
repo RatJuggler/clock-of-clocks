@@ -50,4 +50,15 @@ class Configuration {
     showFaceColour() {
         return this.faceColour;
     }
+
+    setRimColour(rimColour) {
+        if (/^#[0-9A-Fa-f]{6}$/i.test(rimColour.toString())) {
+            this.rimColour = rimColour.toString();
+            window.dispatchEvent(new Event('resize'));
+        }
+    }
+
+    showRimColour() {
+        return this.rimColour;
+    }
 }
