@@ -22,7 +22,7 @@
   <div id="top-menu">
     <ul>
       <li><a class="brand" href="#">Clock-of-Clocks</a></li>
-      <li><a href="javascript:toggleControls()">Controls</a></li>
+      <li><a id="controls" href="#">Controls</a></li>
       <li><a href="https://github.com/RatJuggler/clock-of-clocks">GitHub</a></li>
     </ul>
   </div>
@@ -62,10 +62,11 @@
   <script src="js/sketch.js"></script>
 
   <script>
-      function toggleControls() {
+      const controls = document.getElementById("controls");
+      controls.addEventListener("click", function() {
           let co = document.getElementById("controls-overlay");
           co.className = (co.className === "controls--hide") ? "controls--show" : "controls--hide";
-      }
+      });
       const debugControl = document.getElementById("debug-control");
       const debugValue = document.getElementById("debug-value");
       debugControl.addEventListener("input", function() {
